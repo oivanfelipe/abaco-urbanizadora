@@ -6,16 +6,16 @@
 /* ─── TOKENS ──────────────────────────────────────────────────── */
 :root {
   --black:   #090909;
-  --surface: #121212;
-  --lift:    #1A1A1A;
-  --border:  #242424;
-  --faint:   #2E2E2E;
+  --surface: #111111;
+  --lift:    #191919;
+  --border:  #222222;
+  --faint:   #2C2C2C;
   --red:     #E30613;
-  --red-lo:  rgba(227,6,19,.08);
-  --red-mid: rgba(227,6,19,.18);
-  --text:    #F2F1EA;
-  --muted:   #696963;
-  --dim:     #444440;
+  --red-lo:  rgba(227,6,19,.07);
+  --red-mid: rgba(227,6,19,.16);
+  --text:    #F1F0E9;
+  --muted:   #686862;
+  --dim:     #3E3E3A;
   --bg: var(--black);
   --fg: var(--text);
 }
@@ -23,34 +23,32 @@
   --black:   #F3F2EC;
   --surface: #E9E8E1;
   --lift:    #DEDAD2;
-  --border:  #CCCBC3;
+  --border:  #CECDC5;
   --faint:   #BFBDB5;
   --text:    #111110;
-  --muted:   #6B6A64;
-  --dim:     #999890;
+  --muted:   #696862;
+  --dim:     #C0BEB6;
   --red-lo:  rgba(227,6,19,.06);
-  --red-mid: rgba(227,6,19,.12);
+  --red-mid: rgba(227,6,19,.13);
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     --black:   #F3F2EC;
     --surface: #E9E8E1;
     --lift:    #DEDAD2;
-    --border:  #CCCBC3;
+    --border:  #CECDC5;
     --faint:   #BFBDB5;
     --text:    #111110;
-    --muted:   #6B6A64;
-    --dim:     #999890;
+    --muted:   #696862;
+    --dim:     #C0BEB6;
     --red-lo:  rgba(227,6,19,.06);
-    --red-mid: rgba(227,6,19,.12);
+    --red-mid: rgba(227,6,19,.13);
   }
 }
 
-/* ─── RESET / BASE ────────────────────────────────────────────── */
+/* ─── RESET ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { overflow: hidden; height: 100%; }
-
 body {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
@@ -62,7 +60,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── SNAP SECTION ────────────────────────────────────────────── */
+/* ─── SNAP ────────────────────────────────────────────────────── */
 .snap {
   height: 100svh;
   scroll-snap-align: start;
@@ -73,325 +71,341 @@ body {
   justify-content: center;
 }
 
-/* ─── NAV ─────────────────────────────────────────────────────── */
+/* ─── FIXED NAV ───────────────────────────────────────────────── */
 .nav {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 200;
   padding: 0 40px;
-  height: 56px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(9,9,9,.82);
+  background: rgba(9,9,9,.85);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .nav { background: rgba(243,242,236,.85); }
+  :root:not([data-theme="dark"]) .nav { background: rgba(243,242,236,.88); }
 }
-:root[data-theme="light"] .nav { background: rgba(243,242,236,.85); }
-
+:root[data-theme="light"] .nav { background: rgba(243,242,236,.88); }
 .nav-logo {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
 }
-.nav-logo b { color: var(--red); font-weight: 700; }
+.nav-logo b { color: var(--red); }
 .nav-tag {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
 /* ─── DOT NAV ─────────────────────────────────────────────────── */
-.dot-nav {
+.dots {
   position: fixed;
-  right: 24px;
+  right: 22px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 200;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
 }
-.dot-nav a {
+.dots a {
   display: block;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--dim);
-  transition: background .25s, transform .25s;
+  transition: background .2s, transform .2s;
   text-decoration: none;
 }
-.dot-nav a.active { background: var(--red); transform: scale(1.5); }
-@media (max-width: 700px) { .dot-nav { display: none; } }
+.dots a.on { background: var(--red); transform: scale(1.6); }
+@media (max-width: 680px) { .dots { display: none; } }
 
 /* ─── UTILITIES ───────────────────────────────────────────────── */
 .w { max-width: 1100px; margin: 0 auto; padding: 0 40px; width: 100%; }
-.w--narrow { max-width: 820px; }
 
-.eyebrow {
+.ey {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .2em;
+  font-weight: 700;
+  letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--red);
   display: block;
   margin-bottom: 14px;
 }
+.ey--dim { color: var(--muted); }
 
-.s-title {
+.h1 {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: clamp(28px, 3.8vw, 52px);
+  font-size: clamp(30px, 4.2vw, 58px);
   line-height: 1.05;
   text-transform: uppercase;
   letter-spacing: -.01em;
   color: var(--text);
   text-wrap: balance;
 }
-.s-title em { font-style: normal; color: var(--red); }
+.h1 em { font-style: normal; color: var(--red); }
 
-.s-sub {
+.body {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.75;
   color: var(--muted);
   margin-top: 14px;
 }
-.s-sub strong { color: var(--text); font-weight: 500; }
+.body strong { color: var(--text); font-weight: 500; }
+.body + .body { margin-top: 10px; }
 
-.rule { height: 1px; background: var(--red); }
-.rule--border { background: var(--border); }
-
-/* ─── FINDING CARD ────────────────────────────────────────────── */
-.f-list { display: flex; flex-direction: column; gap: 2px; }
-.f {
-  background: var(--surface);
-  padding: 14px 18px;
-  border-left: 2px solid var(--faint);
-  transition: border-color .2s;
-}
-.f:hover { border-left-color: var(--red); }
-.f--alert { border-left-color: var(--red); background: var(--red-lo); }
-.f--ok { border-left-color: var(--faint); }
-
-.f-tag {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 5px;
-}
-.f-tag--ok { color: var(--muted); }
-.f-text {
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--text);
-}
-.f-text strong { color: var(--red); font-weight: 600; }
-
-/* ─── SPLIT LAYOUT ────────────────────────────────────────────── */
+/* ─── SPLIT ───────────────────────────────────────────────────── */
 .split {
   display: grid;
   grid-template-columns: 44fr 56fr;
   gap: 56px;
   align-items: start;
 }
-.split--flip { grid-template-columns: 56fr 44fr; }
+.split--rev { grid-template-columns: 56fr 44fr; }
+.split--half { grid-template-columns: 1fr 1fr; }
 
-/* ─── STAT GRID ───────────────────────────────────────────────── */
-.stat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  background: var(--border);
-}
-.stat-cell {
+/* ─── CARD GRIDS ──────────────────────────────────────────────── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--border); }
+
+.card {
   background: var(--surface);
-  padding: 24px 28px;
+  padding: 20px 22px;
 }
-.stat-cell--alt { background: var(--lift); }
-.stat-n {
+.card--lift { background: var(--lift); }
+.card--red { background: var(--red-lo); border: 1px solid var(--red-mid); }
+
+/* ─── STAT IN CARD ────────────────────────────────────────────── */
+.cn {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: clamp(36px, 4vw, 56px);
+  font-size: clamp(36px, 4vw, 54px);
   line-height: 1;
   color: var(--text);
   letter-spacing: -.02em;
 }
-.stat-n--red { color: var(--red); }
-.stat-l {
+.cn--red { color: var(--red); }
+.cl {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 6px;
-}
-
-/* ─── MARKET CARDS ────────────────────────────────────────────── */
-.mkt-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 28px;
-}
-.mkt-card {
-  background: var(--surface);
-  padding: 24px 22px;
-}
-.mkt-card--hi { background: var(--lift); }
-.mkt-n {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: clamp(36px, 3.5vw, 52px);
-  line-height: 1;
-  color: var(--red);
-  letter-spacing: -.02em;
-  margin-bottom: 6px;
-}
-.mkt-l {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--muted);
+  margin-top: 5px;
   margin-bottom: 10px;
 }
-.mkt-t { font-size: 12px; line-height: 1.6; color: var(--muted); font-weight: 300; }
+.ct { font-size: 12px; line-height: 1.6; color: var(--muted); font-weight: 300; }
 
-/* ─── CLIENT GRID ─────────────────────────────────────────────── */
-.cl-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 28px;
-}
-.cl-cell {
+/* ─── FINDING ─────────────────────────────────────────────────── */
+.flist { display: flex; flex-direction: column; gap: 2px; }
+.f {
   background: var(--surface);
-  padding: 20px 24px;
+  padding: 13px 18px;
+  border-left: 2px solid var(--faint);
+  transition: border-color .2s;
 }
-.cl-cell--hi { background: var(--lift); }
-.cl-name {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+.f:hover { border-left-color: var(--red); }
+.f--hot { border-left-color: var(--red); background: var(--red-lo); }
+.f--ok  { border-left-color: var(--faint); }
+.ftag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  letter-spacing: .02em;
-  color: var(--text);
+  color: var(--red);
   margin-bottom: 4px;
 }
-.cl-sec {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+.ftag--ok { color: var(--muted); }
+.ft { font-size: 13px; line-height: 1.55; color: var(--text); }
+.ft strong { color: var(--red); font-weight: 600; }
+.ft em { font-style: italic; color: var(--muted); }
 
-/* ─── METHOD PILLARS ──────────────────────────────────────────── */
-.m-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 28px;
+/* ─── QUOTE STRIP ─────────────────────────────────────────────── */
+.qstrip {
+  background: var(--lift);
+  border-top: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 2px;
 }
-.m-card {
-  background: var(--surface);
-  padding: 24px 22px 28px;
-  position: relative;
-}
-.m-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--border);
-  transition: background .25s;
-}
-.m-card:hover::before { background: var(--red); }
-.m-idx {
+.qtext {
   font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 52px;
-  line-height: 1;
-  color: var(--faint);
-  letter-spacing: -.03em;
-  margin-bottom: 10px;
-}
-.m-name {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 21px;
+  font-weight: 600;
+  font-size: clamp(13px, 1.4vw, 18px);
   text-transform: uppercase;
   color: var(--text);
-  margin-bottom: 10px;
-  letter-spacing: .02em;
+  line-height: 1.25;
+  flex: 1;
 }
-.m-desc { font-size: 12px; line-height: 1.65; color: var(--muted); font-weight: 300; }
-.m-items { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
-.m-item {
+.qtext em { color: var(--red); font-style: normal; }
+.qdesc { font-size: 12px; line-height: 1.6; color: var(--muted); font-weight: 300; flex: 1; }
+
+/* ─── HERO ────────────────────────────────────────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(90px, 18vw, 280px);
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 32px;
+  overflow: hidden;
+}
+.hero-inner { position: relative; }
+.hero-client {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 18px;
+  display: block;
+}
+.hero-h {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 7vw, 96px);
+  line-height: 1.0;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  color: var(--text);
+  text-wrap: balance;
+  margin-bottom: 22px;
+  max-width: 900px;
+}
+.hero-h em { font-style: normal; color: var(--red); }
+.hero-sub {
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-weight: 300;
   color: var(--muted);
-  padding-left: 12px;
-  position: relative;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
-.m-item::before { content: '—'; position: absolute; left: 0; color: var(--red); }
-
-/* ─── DELIVERABLE GRID ────────────────────────────────────────── */
-.d-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+.hero-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 32px;
   background: var(--border);
-  margin-top: 28px;
 }
-.d-card { background: var(--surface); padding: 24px 22px; }
-.d-num {
+.hd-cell {
+  background: var(--surface);
+  padding: 14px 24px;
+  border-right: 1px solid var(--border);
+}
+.hd-cell:last-child { border-right: none; }
+.hd-n {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 28px;
-  color: var(--red);
-  margin-bottom: 10px;
   line-height: 1;
+  color: var(--red);
+  letter-spacing: -.02em;
 }
-.d-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-.d-desc { font-size: 12px; line-height: 1.6; color: var(--muted); font-weight: 300; }
+.hd-l {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.hero-rule { display: flex; align-items: center; gap: 16px; }
+.hr-line { flex: 1; height: 1px; background: var(--border); }
+.hr-txt {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
 
-/* ─── COMPARE TABLE ───────────────────────────────────────────── */
-.table-wrap { overflow-x: auto; }
-.cmp {
-  width: 100%;
-  border-collapse: collapse;
+/* ─── VERBATIM QUOTE ──────────────────────────────────────────── */
+.vquote {
+  border-left: 3px solid var(--red);
+  padding: 16px 20px;
+  background: var(--red-lo);
+  margin-bottom: 2px;
 }
-.cmp th, .cmp td {
+.vquote-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--text);
+  font-weight: 300;
+}
+.vquote-attr {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-top: 8px;
+}
+
+/* ─── BIG HIGHLIGHT BOX ───────────────────────────────────────── */
+.highlight {
+  background: var(--red);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.hl-n {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 4vw, 56px);
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -.02em;
+  flex-shrink: 0;
+}
+.hl-div { width: 1px; height: 48px; background: rgba(255,255,255,.25); flex-shrink: 0; }
+.hl-t { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,.8); font-weight: 300; flex: 1; }
+.hl-t strong { color: #fff; font-weight: 600; }
+
+/* ─── DIFF TABLE ──────────────────────────────────────────────── */
+.dtable { width: 100%; border-collapse: collapse; }
+.dtable th, .dtable td {
   padding: 11px 16px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   text-align: left;
   border-bottom: 1px solid var(--border);
 }
-.cmp th {
+.dtable th {
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -399,39 +413,140 @@ body {
   color: var(--muted);
   background: var(--lift);
 }
-.cmp td { color: var(--text); font-weight: 400; }
-.cmp td:first-child { color: var(--muted); font-size: 11px; }
+.dtable td { color: var(--text); font-weight: 400; }
+.dtable td:first-child { color: var(--muted); font-size: 11px; }
 .yes { color: var(--red); font-weight: 700; }
 .no  { color: var(--dim); }
+.ok  { color: var(--text); font-weight: 500; }
+
+/* ─── PILLAR GRID ─────────────────────────────────────────────── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+  margin-top: 24px;
+}
+.pillar {
+  background: var(--surface);
+  padding: 22px 20px 28px;
+  position: relative;
+}
+.pillar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--border);
+  transition: background .2s;
+}
+.pillar:hover::before { background: var(--red); }
+.p-idx {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--faint);
+  letter-spacing: -.03em;
+  margin-bottom: 8px;
+}
+.p-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: .02em;
+}
+.p-desc { font-size: 11px; line-height: 1.65; color: var(--muted); font-weight: 300; }
+.p-items { margin-top: 12px; display: flex; flex-direction: column; gap: 5px; }
+.p-item {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  padding-left: 12px;
+  position: relative;
+}
+.p-item::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+
+/* ─── FLOW STEPS ──────────────────────────────────────────────── */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  background: var(--border);
+  margin-top: 24px;
+}
+.flow-step {
+  background: var(--surface);
+  padding: 18px 16px 22px;
+  position: relative;
+  border-right: 1px solid var(--border);
+}
+.flow-step:last-child { border-right: none; }
+.flow-step--active { background: var(--lift); }
+.flow-step--problem { background: var(--red-lo); }
+.fs-n {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--faint);
+  letter-spacing: -.02em;
+  margin-bottom: 8px;
+}
+.fs-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: .04em;
+}
+.fs-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.fs-tag--ok { color: var(--muted); }
+.fs-items { display: flex; flex-direction: column; gap: 4px; }
+.fs-item { font-size: 11px; line-height: 1.4; color: var(--muted); font-weight: 300; }
 
 /* ─── CTA ─────────────────────────────────────────────────────── */
 .cta-wrap {
   background: var(--red);
   height: 100svh;
+  scroll-snap-align: start;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-snap-align: start;
-  overflow: hidden;
   position: relative;
 }
-.cta-bg {
+.cta-bg-txt {
   position: absolute;
-  inset: 0;
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: clamp(100px, 18vw, 280px);
   line-height: 0.85;
-  color: rgba(255,255,255,.07);
+  color: rgba(255,255,255,.06);
   text-transform: uppercase;
   pointer-events: none;
   user-select: none;
+  overflow: hidden;
+  inset: 0;
   display: flex;
   align-items: center;
-  overflow: hidden;
   padding: 40px;
 }
-.cta-content { text-align: center; position: relative; }
+.cta-inner { text-align: center; position: relative; }
 .cta-ey {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 10px;
@@ -439,47 +554,42 @@ body {
   letter-spacing: .22em;
   text-transform: uppercase;
   color: rgba(255,255,255,.5);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .cta-h {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: clamp(38px, 6vw, 80px);
+  font-size: clamp(36px, 5.5vw, 76px);
   text-transform: uppercase;
   line-height: 1;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .cta-s {
   font-size: 15px;
   line-height: 1.7;
   color: rgba(255,255,255,.7);
   font-weight: 300;
-  max-width: 520px;
-  margin: 0 auto 40px;
+  max-width: 500px;
+  margin: 0 auto 36px;
 }
-.cta-steps {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: wrap;
-}
+.cta-steps { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
 .cta-step {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 28px;
+  gap: 11px;
+  padding: 0 24px;
   border-right: 1px solid rgba(255,255,255,.2);
 }
 .cta-step:last-child { border-right: none; }
-.cta-step-n {
+.cta-sn {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: 36px;
-  color: rgba(255,255,255,.25);
+  font-size: 32px;
+  color: rgba(255,255,255,.22);
   line-height: 1;
 }
-.cta-step-t {
+.cta-st {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 11px;
   font-weight: 600;
@@ -490,873 +600,229 @@ body {
   line-height: 1.4;
 }
 
-/* ─── HERO SPECIFIC ───────────────────────────────────────────── */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: clamp(100px, 20vw, 300px);
-  line-height: 0.85;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--border);
-  text-stroke: 1px var(--border);
-  text-transform: uppercase;
-  pointer-events: none;
-  user-select: none;
-  display: flex;
-  align-items: flex-end;
-  padding: 0 32px 0;
-  overflow: hidden;
-}
-.hero-content { position: relative; }
-
-.hero-client {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 20px;
-  display: block;
-}
-.hero-h {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: clamp(44px, 7.5vw, 100px);
-  line-height: 1.0;
-  text-transform: uppercase;
-  letter-spacing: -.01em;
-  color: var(--text);
-  text-wrap: balance;
-  margin-bottom: 24px;
-  max-width: 900px;
-}
-.hero-h em { font-style: normal; color: var(--red); }
-.hero-sub {
-  font-size: clamp(14px, 1.5vw, 17px);
-  font-weight: 300;
-  color: var(--muted);
-  max-width: 540px;
-  line-height: 1.7;
-  margin-bottom: 32px;
-}
-.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
-.pill {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border: 1px solid var(--border);
-  color: var(--dim);
-  background: var(--surface);
-}
-.pill--on { border-color: var(--red); color: var(--red); background: var(--red-lo); }
-
-.hero-rule { display: flex; align-items: center; gap: 20px; }
-.hero-rule-line { flex: 1; height: 1px; background: var(--border); }
-.hero-rule-txt {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-/* ─── BIG COST SECTION ────────────────────────────────────────── */
-.cost-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 28px;
-}
-.cost-card { background: var(--surface); padding: 32px 28px; }
-.cost-card--hi { background: var(--lift); }
-.cost-n {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: clamp(52px, 5.5vw, 72px);
-  line-height: 1;
-  color: var(--red);
-  letter-spacing: -.02em;
-  margin-bottom: 8px;
-}
-.cost-l {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.cost-t { font-size: 13px; line-height: 1.65; color: var(--muted); font-weight: 300; }
-
-/* ─── BIG QUOTE BAND ──────────────────────────────────────────── */
-.quote-band {
-  background: var(--lift);
-  border-top: 1px solid var(--border);
-  padding: 18px 28px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.quote-band-q {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 600;
-  font-size: clamp(14px, 1.6vw, 20px);
-  text-transform: uppercase;
-  color: var(--text);
-  flex: 1;
-  line-height: 1.2;
-}
-.quote-band-q em { color: var(--red); font-style: normal; }
-.quote-band-p { font-size: 12px; line-height: 1.6; color: var(--muted); font-weight: 300; flex: 1; }
-
-/* ─── EE PHASES ───────────────────────────────────────────────── */
-.ee-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 28px;
-}
-.ee-card {
-  background: var(--surface);
-  padding: 0;
-  overflow: hidden;
-}
-.ee-head {
-  padding: 16px 18px;
-  background: var(--lift);
-  border-bottom: 1px solid var(--border);
-}
-.ee-phase {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 1;
-  color: var(--faint);
-  letter-spacing: -.02em;
-}
-.ee-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--red);
-  margin-top: 3px;
-}
-.ee-body { padding: 16px 18px; }
-.ee-theme {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: var(--text);
-  margin-bottom: 10px;
-  letter-spacing: .04em;
-}
-.ee-items { display: flex; flex-direction: column; gap: 5px; }
-.ee-item {
-  font-size: 11px;
-  line-height: 1.45;
-  color: var(--muted);
-  padding-left: 12px;
-  position: relative;
-  font-weight: 300;
-}
-.ee-item::before { content: '→'; position: absolute; left: 0; color: var(--red); font-size: 10px; }
-
-/* ─── FOOTER ──────────────────────────────────────────────────── */
-.foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-  margin-top: 20px;
-}
-.foot-logo {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--text);
-}
-.foot-logo b { color: var(--red); }
-.foot-meta {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: .05em;
-}
-.foot-conf {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  color: var(--faint);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
 /* ─── REVEAL ──────────────────────────────────────────────────── */
-.r {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .55s ease, transform .55s ease;
-}
+.r { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
 .r.v { opacity: 1; transform: none; }
-.r1 { transition-delay: .1s; }
-.r2 { transition-delay: .2s; }
-.r3 { transition-delay: .3s; }
-.r4 { transition-delay: .4s; }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+.d4 { transition-delay: .4s; }
 @media (prefers-reduced-motion: reduce) { .r { opacity: 1; transform: none; transition: none; } }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────── */
-@media (max-width: 880px) {
-  .split, .split--flip { grid-template-columns: 1fr; gap: 28px; }
-  .m-grid { grid-template-columns: repeat(2, 1fr); }
-  .ee-grid { grid-template-columns: repeat(3, 1fr); }
-  .mkt-grid { grid-template-columns: repeat(2, 1fr); }
-  .cl-grid { grid-template-columns: repeat(2, 1fr); }
-  .cta-steps { flex-direction: column; align-items: center; gap: 16px; }
-  .cta-step { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 0 0 16px; width: 220px; }
+@media (max-width: 860px) {
+  .split, .split--rev, .split--half { grid-template-columns: 1fr; gap: 24px; }
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .flow { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(2, 1fr); }
+  .cta-steps { flex-direction: column; align-items: center; gap: 14px; }
+  .cta-step { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 0 0 14px; }
   .cta-step:last-child { border-bottom: none; }
 }
-@media (max-width: 580px) {
+@media (max-width: 560px) {
   .w { padding: 0 20px; }
   .nav { padding: 0 20px; }
-  .cost-grid, .d-grid { grid-template-columns: 1fr; }
-  .m-grid, .ee-grid { grid-template-columns: 1fr; }
-  .cl-grid { grid-template-columns: 1fr; }
-  .mkt-grid { grid-template-columns: 1fr; }
-  .stat-grid { grid-template-columns: 1fr; }
-  .quote-band { flex-direction: column; }
+  .g2, .g3, .g4, .pillars, .flow { grid-template-columns: 1fr; }
+  .hero-data { flex-direction: column; }
+  .hd-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .highlight { flex-direction: column; gap: 12px; }
+  .hl-div { display: none; }
+  .qstrip { flex-direction: column; }
 }
 </style>
 
-<!-- ═══════════════════ FIXED NAV ═══════════════════════════════ -->
+<!-- FIXED NAV -->
 <nav class="nav">
   <a href="#s1" class="nav-logo">V4<b>.</b>Company</a>
-  <span class="nav-tag">Ábaco Urbanizadora · Diagnóstico Estratégico</span>
+  <span class="nav-tag">Ábaco Urbanizadora · Proposta Estratégica</span>
 </nav>
 
-<!-- ═══════════════════ DOT NAV ═════════════════════════════════ -->
-<nav class="dot-nav" id="dotNav">
-  <a href="#s1"></a>
-  <a href="#s2"></a>
-  <a href="#s3"></a>
-  <a href="#s4"></a>
-  <a href="#s5"></a>
-  <a href="#s6"></a>
-  <a href="#s7"></a>
-  <a href="#s8"></a>
-  <a href="#s9"></a>
-  <a href="#s10"></a>
-  <a href="#s11"></a>
-  <a href="#s12"></a>
+<!-- DOT NAV -->
+<nav class="dots" id="dotNav">
+  <a href="#s1"></a><a href="#s2"></a><a href="#s3"></a><a href="#s4"></a>
+  <a href="#s5"></a><a href="#s6"></a><a href="#s7"></a><a href="#s8"></a>
+  <a href="#s9"></a><a href="#s10"></a><a href="#s11"></a><a href="#s12"></a>
   <a href="#s13"></a>
-  <a href="#s14"></a>
 </nav>
 
-<!-- ══════════════════════════════════════════════════════════════
-     S1 · HERO
-══════════════════════════════════════════════════════════════════ -->
+<!-- ══ S1 · HERO ════════════════════════════════════════════════ -->
 <section class="snap" id="s1">
   <div class="hero-bg" aria-hidden="true">ÁBACO</div>
-  <div class="w hero-content">
-    <span class="hero-client r">Ábaco Urbanizadora · Diagnóstico Externo V4</span>
-    <h1 class="hero-h r r1">
-      O negócio<br>cresce. O<br>marketing<br><em>acompanha?</em>
+  <div class="w hero-inner">
+    <span class="hero-client r">Ábaco Urbanizadora · Proposta V4 Company</span>
+    <h1 class="hero-h r d1">
+      R$2 bilhões<br>em estoque.<br>O gargalo não é<br>o <em>produto.</em>
     </h1>
-    <p class="hero-sub r r2">
-      45 anos de história, empreendimentos no Sul e Sudeste. A V4 traz o que falta: uma visão estratégica de fora, com metodologia validada em 5.500 empresas.
+    <p class="hero-sub r d2">
+      Vocês têm produto sólido, estrutura de marketing com 16 pessoas, CRM proprietário e R$120k/mês em mídia. O gargalo que impede as vendas está em outro lugar — e a V4 sabe exatamente onde.
     </p>
-    <div class="hero-pills r r3">
-      <span class="pill pill--on">Diagnóstico de Mercado</span>
-      <span class="pill pill--on">Diagnóstico de Marketing</span>
-      <span class="pill pill--on">Diagnóstico Comercial</span>
-      <span class="pill">Planejamento Estratégico</span>
-      <span class="pill">Execução</span>
+    <div class="hero-data r d3">
+      <div class="hd-cell">
+        <div class="hd-n">R$2bi</div>
+        <div class="hd-l">Estoque em venda</div>
+      </div>
+      <div class="hd-cell">
+        <div class="hd-n">60k</div>
+        <div class="hd-l">Leads na base (5 anos)</div>
+      </div>
+      <div class="hd-cell">
+        <div class="hd-n">R$120k</div>
+        <div class="hd-l">Investimento/mês em digital</div>
+      </div>
+      <div class="hd-cell">
+        <div class="hd-n">5</div>
+        <div class="hd-l">Estados de operação</div>
+      </div>
     </div>
-    <div class="hero-rule r r4">
-      <div class="hero-rule-line"></div>
-      <span class="hero-rule-txt">Estruturação Estratégica V4 · Entrega Completa</span>
-      <div class="hero-rule-line"></div>
+    <div class="hero-rule r d4">
+      <div class="hr-line"></div>
+      <span class="hr-txt">Estruturação Estratégica V4 · Ponta a Ponta</span>
+      <div class="hr-line"></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════
-     S2 · QUEM É A V4
-══════════════════════════════════════════════════════════════════ -->
+<!-- ══ S2 · O QUE OUVIMOS NA CALL ═══════════════════════════════ -->
 <section class="snap" id="s2" style="background:var(--surface)">
   <div class="w">
-    <div class="split">
-      <div>
-        <span class="eyebrow r">Quem somos</span>
-        <h2 class="s-title r r1">Não somos<br>agência.<br><em>Somos método.</em></h2>
-        <p class="s-sub r r2">
-          A V4 Company é a maior consultoria de marketing digital do Brasil. <strong>Não entregamos campanha — entregamos diagnóstico, estratégia e sistema.</strong> Nosso papel é sentar ao lado do time interno e construir o que falta: clareza de dados, processo e visão de fora.
-        </p>
-        <p class="s-sub r r3" style="margin-top:12px">
-          Para a Ábaco, isso significa trabalhar junto ao time de marketing e ao time comercial para mapear gargalos reais, <strong>comparar com benchmarks do setor imobiliário</strong> e entregar um plano que o time executa.
-        </p>
+    <span class="ey r">O que a gente ouviu</span>
+    <h2 class="h1 r d1">A Ábaco já<br>construiu muito.<br><em>E sabe disso.</em></h2>
+    <div class="g4 r d2" style="margin-top:24px">
+      <div class="card card--lift">
+        <div class="cn">16</div>
+        <div class="cl">Pessoas no marketing</div>
+        <div class="ct">Time interno de marketing montado, com produção de conteúdo, mídia paga e acompanhamento de indicadores.</div>
       </div>
-      <div class="r r2">
-        <div class="stat-grid">
-          <div class="stat-cell">
-            <div class="stat-n">5.500<sup style="font-size:.45em;color:var(--muted)">+</sup></div>
-            <div class="stat-l">Empresas atendidas</div>
-          </div>
-          <div class="stat-cell stat-cell--alt">
-            <div class="stat-n stat-n--red">230</div>
-            <div class="stat-l">Escritórios no Brasil</div>
-          </div>
-          <div class="stat-cell stat-cell--alt">
-            <div class="stat-n">12<sup style="font-size:.45em;color:var(--muted)">anos</sup></div>
-            <div class="stat-l">Metodologia validada</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-n">R$200M</div>
-            <div class="stat-l">Receita anual</div>
-          </div>
-        </div>
-        <div class="quote-band" style="margin-top:2px">
-          <p class="quote-band-p">Treinados por metodologia validada em mais de 3.000 empresas. Cada diagnóstico segue o mesmo rigor — independente do setor ou tamanho do cliente.</p>
-        </div>
+      <div class="card">
+        <div class="cn cn--red">R$120k</div>
+        <div class="cl">Investimento mensal em digital</div>
+        <div class="ct">Volume de investimento relevante. Os leads chegam. A questão é o que acontece depois que eles chegam.</div>
       </div>
+      <div class="card card--lift">
+        <div class="cn">CRM</div>
+        <div class="cl">Proprietário, desenvolvido internamente</div>
+        <div class="ct">Faz tracking completo, disparo de e-mail e WhatsApp. Rastreabilidade e dados estão disponíveis — o problema não é falta de CRM.</div>
+      </div>
+      <div class="card">
+        <div class="cn cn--red">60k</div>
+        <div class="cl">Leads acumulados em 5 anos</div>
+        <div class="ct">Uma das maiores oportunidades inexploradas da Ábaco. Essa base é ativo com potencial de receita imediata — sem custo adicional de mídia.</div>
+      </div>
+    </div>
+    <div class="qstrip r d3">
+      <p class="qtext">"a gente tem <em>muito desperdício de lead</em>, um investimento muito grande e acaba não fechando a venda"</p>
+      <p class="qdesc">Roberto, na call de diagnóstico. O ponto de partida da V4 não é questionar o que vocês têm — é resolver o que está travando o que já funciona.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════
-     S3 · PORTFÓLIO
-══════════════════════════════════════════════════════════════════ -->
+<!-- ══ S3 · ROBERTO TEM RAZÃO ═══════════════════════════════════ -->
 <section class="snap" id="s3">
   <div class="w">
-    <div class="split--flip split">
+    <div class="split">
       <div>
-        <span class="eyebrow r">Portfólio de referência</span>
-        <h2 class="s-title r r1">Grandes marcas.<br><em>Mesma<br>metodologia.</em></h2>
-        <p class="s-sub r r2">
-          A Estruturação Estratégica que propomos para a Ábaco é o mesmo método que usamos para estruturar crescimento de líderes em seus segmentos. <strong>O que muda é o contexto — o rigor é o mesmo.</strong>
-        </p>
+        <span class="ey r">A tese central</span>
+        <h2 class="h1 r d1">O lead não é<br>o problema.<br><em>Roberto tem razão.</em></h2>
+        <p class="body r d2">Roberto foi preciso na call: <strong>"a forma que tá sendo abordada é que não tá certo"</strong> — não o lead em si. Quando a Ábaco bota no anúncio o preço do lote e o perfil de comprador, o filtro funciona. Oito em dez leads têm perfil.</p>
+        <p class="body r d3">O problema está no que acontece depois que esse lead converte: o processo de atendimento, a abordagem, a cadência, a falta de separação entre quem qualifica e quem fecha.</p>
+        <p class="body r d4"><strong>Isso não é um problema de marketing. É um problema de processo comercial.</strong> E é exatamente onde a V4 entra.</p>
       </div>
-      <div class="r r2">
-        <div class="cl-grid">
-          <div class="cl-cell">
-            <div class="cl-name">XP Investimentos</div>
-            <div class="cl-sec">Serviços Financeiros</div>
-          </div>
-          <div class="cl-cell cl-cell--hi">
-            <div class="cl-name">Localiza</div>
-            <div class="cl-sec">Mobilidade e Locação</div>
-          </div>
-          <div class="cl-cell">
-            <div class="cl-name">Tok&Stok</div>
-            <div class="cl-sec">Varejo / E-commerce</div>
-          </div>
-          <div class="cl-cell cl-cell--hi">
-            <div class="cl-name">Quinto Andar</div>
-            <div class="cl-sec">Mercado Imobiliário</div>
-          </div>
-          <div class="cl-cell">
-            <div class="cl-name">Gympass</div>
-            <div class="cl-sec">B2B / Benefícios</div>
-          </div>
-          <div class="cl-cell" style="background:var(--red-lo); border: 1px solid var(--red-mid)">
-            <div class="cl-name" style="color:var(--red)">+5.500</div>
-            <div class="cl-sec">Empresas nos mais variados setores</div>
-          </div>
+      <div class="flist r d2">
+        <div class="vquote">
+          <div class="vquote-text">"Ele falam que é desqualificado. Eu entendo que não é desqualificado. Eu entendo que a forma que tá sendo abordada é que não tá certo."</div>
+          <div class="vquote-attr">Roberto · Call V4 × Ábaco</div>
+        </div>
+        <div class="f f--hot">
+          <div class="ftag">Sem SDR / Closer separado</div>
+          <div class="ft">O mesmo corretor que faz o primeiro contato é quem tenta fechar a venda. <strong>Cada função exige uma habilidade diferente.</strong> Juntas, as duas se prejudicam.</div>
+        </div>
+        <div class="f f--hot">
+          <div class="ftag">Processo não padronizado nos 5 estados</div>
+          <div class="ft">"É geral" — a qualidade de atendimento está ruim em todos os estados. Não é problema regional: é falta de <strong>padrão e rotina definidos</strong> para o time.</div>
+        </div>
+        <div class="f f--hot">
+          <div class="ftag">Sem rotina de revisão de pipeline</div>
+          <div class="ft">A liderança vê só o número final (leads gerados, vendas fechadas). <strong>O que acontece no meio — revisão de pipe, script, agenda — é invisível.</strong></div>
+        </div>
+        <div class="f f--hot">
+          <div class="ftag">60.000 leads sem reativação sistemática</div>
+          <div class="ft">A base de 5 anos existe, está no CRM. <strong>Mas não existe cadência de reativação.</strong> É a maior oportunidade sem custo de mídia que a Ábaco tem.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════
-     S4 · MERCADO IMOBILIÁRIO
-══════════════════════════════════════════════════════════════════ -->
+<!-- ══ S4 · O CUSTO DO GARGALO ══════════════════════════════════ -->
 <section class="snap" id="s4" style="background:var(--surface)">
   <div class="w">
-    <span class="eyebrow r">01 · Diagnóstico de Mercado</span>
-    <h2 class="s-title r r1">O mercado está<br>acelerado. A janela<br><em>é agora.</em></h2>
-    <div class="mkt-grid r r2">
-      <div class="mkt-card">
-        <div class="mkt-n">+31,9%</div>
-        <div class="mkt-l">Lançamentos · 1º sem. 2025</div>
-        <div class="mkt-t">Crescimento em volume de lançamentos imobiliários no período. Em valor, alta de 34,6% — o maior ciclo expansivo recente.</div>
+    <span class="ey r">O que isso custa</span>
+    <h2 class="h1 r d1">R$120k/mês<br>com conversão<br><em>abaixo do potencial.</em></h2>
+    <div class="g3 r d2" style="margin-top:24px">
+      <div class="card">
+        <div class="cn cn--red">80%</div>
+        <div class="cl">Queda de conversão sem 5 min de resposta</div>
+        <div class="ct">Leads de loteamento de alto padrão perdem 80% da chance de conversão se o primeiro contato não acontecer em até 5 minutos do cadastro. Velocidade de atendimento é o CRO mais simples e mais ignorado.</div>
       </div>
-      <div class="mkt-card mkt-card--hi">
-        <div class="mkt-n">49%</div>
-        <div class="mkt-l">Brasileiros com intenção de compra</div>
-        <div class="mkt-t">Quase metade dos brasileiros declara intenção de comprar imóvel nos próximos 24 meses. Demanda latente esperando o marketing certo.</div>
+      <div class="card card--lift">
+        <div class="cn cn--red">1%</div>
+        <div class="cl">Taxa de conversão média do setor (lead → contrato)</div>
+        <div class="ct">Empresas de alto desempenho no imobiliário alcançam 2–4% de conversão de lead em contrato. A diferença entre 1% e 3% em cima de 60.000 leads é dezenas de contratos.</div>
       </div>
-      <div class="mkt-card mkt-card--hi">
-        <div class="mkt-n">↑ Sul</div>
-        <div class="mkt-l">Expansão em cidades médias</div>
-        <div class="mkt-t">PR, SC e RS concentram crescimento expressivo em loteamentos planejados e condomínios clube. A Ábaco opera exatamente onde o mercado cresce mais.</div>
-      </div>
-      <div class="mkt-card">
-        <div class="mkt-n">3–5×</div>
-        <div class="mkt-l">Ciclo de decisão vs. outros setores</div>
-        <div class="mkt-t">Compra de lote exige nutrição longa, presença em múltiplos pontos de contato e processo comercial estruturado. Marketing pontual não converte.</div>
+      <div class="card">
+        <div class="cn cn--red">73%</div>
+        <div class="cl">Dos leads nunca reativados</div>
+        <div class="ct">Em média, 73% dos leads que não converteram na abordagem inicial são abandonados. A base de 60k da Ábaco carrega 5 anos de interesse que nunca foi trabalhado sistematicamente.</div>
       </div>
     </div>
-    <div class="quote-band" style="margin-top:2px" >
-      <p class="quote-band-q r">"A demanda vai para quem dominar <em>arquitetura de conversão</em> — não para quem apenas postar bonito."</p>
-      <p class="quote-band-p r r1">Conteúdo + tráfego + WhatsApp + CRM + prova social + oferta certa. Esse é o modelo que converte em loteamentos de alto padrão em 2026. O mercado não espera.</p>
+    <div class="highlight r d3" style="margin-top:2px">
+      <div class="hl-n">R$2bi</div>
+      <div class="hl-div"></div>
+      <p class="hl-t">Em estoque parado. <strong>Não falta produto, não falta lançamento, não falta lead.</strong> O que falta é o processo que converte o que já existe em receita. Esse é o único problema real da Ábaco agora.</p>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════
-     S5 · DIAGNÓSTICO DE MARKETING I — PRESENÇA & AQUISIÇÃO
-══════════════════════════════════════════════════════════════════ -->
+<!-- ══ S5 · POR QUE NÃO SÓ MAIS UMA AGÊNCIA ════════════════════ -->
 <section class="snap" id="s5">
   <div class="w">
-    <div class="split">
+    <div class="split--rev split">
       <div>
-        <span class="eyebrow r">02 · Diagnóstico de Marketing</span>
-        <h2 class="s-title r r1">Presença digital<br>e estratégia<br><em>de aquisição.</em></h2>
-        <p class="s-sub r r2">O que a V4 observa externamente — Meta Ads Library, LinkedIn, site e SEO. Esses dados são o ponto de entrada do diagnóstico, não o destino. O aprofundamento começa com os dados internos.</p>
-        <p class="s-sub r r3" style="margin-top:10px"><strong>Pergunta central:</strong> Quanto custa cada lead hoje? Qual a qualidade média? Quantos viram oportunidade?</p>
+        <span class="ey r">A diferença que importa</span>
+        <h2 class="h1 r d1">Não somos<br>a agência de SP<br><em>de novo.</em></h2>
+        <p class="body r d2">A Ábaco ficou <strong>1 ano e meio com uma agência de São Paulo</strong>, triplicou o custo e voltou para house porque house deu mais resultado. Roberto conhece bem o que uma agência operacional entrega — e não é isso que precisa agora.</p>
+        <p class="body r d3"><strong>A V4 não vende gestão de tráfego.</strong> Vendemos diagnóstico, processo e resultado. Ivan foi claro na call: "a gente vai sempre olhar para a última linha." Não para o lead gerado — para a venda fechada.</p>
+        <p class="body r d4">A diferença não é promessa. É modelo: <strong>a V4 entra na operação, entende o cenário com dados, e define onde está o gargalo real</strong> antes de qualquer execução.</p>
       </div>
-      <div class="f-list r r2">
-        <div class="f f--ok">
-          <div class="f-tag f-tag--ok">Positivo</div>
-          <div class="f-text">Ábaco mantém <strong>anúncios pagos ativos no Meta</strong> — o canal mais eficiente de geração de leads para loteamentos. A empresa já entende que o digital é canal de aquisição.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Estratégia criativa</div>
-          <div class="f-text">Os anúncios observados focam majoritariamente em <strong>produto</strong> (imagens do lote, localização, infraestrutura). Campanhas que convertem mais mostram <strong>resultado de vida</strong> — o sonho, o "depois".</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Pixel e tracking</div>
-          <div class="f-text">Sem auditoria interna, é impossível confirmar se o <strong>Meta Pixel está disparando corretamente</strong> nos eventos de conversão (lead form submit, page view, conteúdo visualizado). Um pixel mal configurado contamina todo o aprendizado do algoritmo.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Landing pages</div>
-          <div class="f-text">O tráfego pago direciona para <strong>páginas genéricas ou o site institucional</strong>? Cada empreendimento deveria ter uma LP dedicada com oferta clara, CTA único e formulário integrado ao CRM.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Google e SEO</div>
-          <div class="f-text">Pouca visibilidade de <strong>estratégia de busca ativa</strong> — Google Ads para intenção de compra e SEO orgânico para "lotes em [cidade]". Quem pesquisa está no fundo do funil e pronto para comprar.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Remarketing</div>
-          <div class="f-text">Não é visível uma <strong>estratégia de retargeting</strong> estruturada para reimpactar quem visitou o site, assistiu a um vídeo ou abriu o formulário mas não converteu.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S6 · DIAGNÓSTICO DE MARKETING II — CONTEÚDO & CONVERSÃO
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s6" style="background:var(--surface)">
-  <div class="w">
-    <div class="split--flip split">
-      <div class="f-list r">
-        <div class="f f--alert">
-          <div class="f-tag">Funil de conteúdo</div>
-          <div class="f-text">Não é visível uma arquitetura de conteúdo com <strong>TOFU / MOFU / BOFU</strong> — conteúdo de consciência, consideração e decisão. A maioria das empresas só produz TOFU e depois espera a venda acontecer.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Prova social</div>
-          <div class="f-text"><strong>Depoimentos de compradores, vídeos de moradores, histórias de valorização de lotes</strong> — o maior gatilho de conversão no imobiliário está ausente ou pouco explorado na comunicação digital.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Vídeo e live</div>
-          <div class="f-text">Live commerce e vídeo-tours chegaram com força ao imobiliário em 2026. <strong>Eventos ao vivo de lançamento</strong> e vídeos de "tour no empreendimento" têm taxas de engajamento e conversão significativamente maiores que estáticos.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">WhatsApp como canal</div>
-          <div class="f-text">O WhatsApp é o maior canal de conversão no imobiliário brasileiro — mas raramente é tratado como canal de <strong>nutrição sistematizada</strong>. Sequências automatizadas de mensagens aumentam o engajamento de leads frios.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Ângulo de proposta</div>
-          <div class="f-text">Cada empreendimento tem um <strong>ângulo dominante de venda</strong>? Blue e Sunset (lifestyle clube), Deltaville Business (industrial/logístico), Lago Azul (golfe e alto padrão). Criativos e copy devem ser distintos por empreendimento.</div>
-        </div>
-        <div class="f f--ok">
-          <div class="f-tag f-tag--ok">Portfólio</div>
-          <div class="f-text">A Ábaco tem portfólio diversificado e forte: Blue, Sunset, Deltaville Marine, Tecnópolis, Lago Azul. <strong>O produto existe e é bom. A narrativa de marketing pode ser muito mais forte.</strong></div>
-        </div>
-      </div>
-      <div>
-        <span class="eyebrow r">02 · Diagnóstico de Marketing</span>
-        <h2 class="s-title r r1">Conteúdo,<br>criativos e<br><em>conversão.</em></h2>
-        <p class="s-sub r r2">O que acontece depois que o lead vê o anúncio? Qual é a experiência entre o clique e o formulário preenchido? Onde está o vazamento de interesse?</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S7 · DIAGNÓSTICO COMERCIAL I — PIPELINE & PROCESSO
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s7">
-  <div class="w">
-    <div class="split">
-      <div>
-        <span class="eyebrow r">03 · Diagnóstico Comercial</span>
-        <h2 class="s-title r r1">Pipeline,<br>processo e<br><em>velocidade.</em></h2>
-        <p class="s-sub r r2">O funil comercial é onde mora a maior diferença entre empresas com o mesmo produto. Um processo estruturado pode dobrar a conversão sem aumentar o investimento em mídia.</p>
-        <p class="s-sub r r3" style="margin-top:10px"><strong>Benchmark imobiliário:</strong> empresas de alto desempenho alcançam 2–4% de conversão de lead em contrato. A maioria opera abaixo de 1%.</p>
-      </div>
-      <div class="f-list r r2">
-        <div class="f f--alert">
-          <div class="f-tag">Velocidade de atendimento</div>
-          <div class="f-text">Leads imobiliários não contactados em <strong>até 5 minutos</strong> do cadastro têm 80% menos chance de converter. O tempo de primeiro contato é o maior CRO gratuito que existe.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Qualificação de leads</div>
-          <div class="f-text">Existe critério claro de <strong>MQL (Marketing Qualified Lead) e SQL</strong>? Ou todo lead vai direto para o time comercial, que gasta energia com quem não tem perfil de compra?</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Etapas do funil</div>
-          <div class="f-text">As etapas estão definidas formalmente? <strong>Lead → Contato → Qualificação → Proposta → Negociação → Fechamento.</strong> Sem etapas claras, o pipeline é uma caixa preta.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Script de vendas</div>
-          <div class="f-text">Cada corretor aborda o lead da sua maneira, ou existe um <strong>script validado</strong> com os argumentos mais eficientes por empreendimento e por objeção?</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Cadência de follow-up</div>
-          <div class="f-text">Após o primeiro contato, existe uma <strong>cadência estruturada</strong>? Dia 1: ligação. Dia 2: WhatsApp. Dia 4: e-mail com material. Dia 7: recontato. Ou o follow-up fica a critério de cada corretor?</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">SLA marketing → comercial</div>
-          <div class="f-text">Existe um <strong>SLA formal</strong> entre marketing e vendas? Definição de lead qualificado, tempo máximo de contato, critério de devolver o lead ao marketing?</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S8 · DIAGNÓSTICO COMERCIAL II — CRM, RETENÇÃO & INDICAÇÃO
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s8" style="background:var(--surface)">
-  <div class="w">
-    <div class="split--flip split">
-      <div class="f-list r">
-        <div class="f f--alert">
-          <div class="f-tag">CRM e gestão de pipeline</div>
-          <div class="f-text">Qual sistema é utilizado? Mais importante: <strong>o time realmente o utiliza</strong>, ou o CRM real é uma planilha e o histórico de conversa está no WhatsApp pessoal do corretor?</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Leads inativos (base fria)</div>
-          <div class="f-text">O que acontece com leads que não converteram há 30, 60 ou 90 dias? Na maioria das empresas, <strong>esses leads são abandonados</strong> — e podem representar até 30% das vendas com uma estratégia de reativação.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">SDR vs. Closer</div>
-          <div class="f-text">Existe separação entre quem <strong>prospecta e qualifica</strong> (SDR) e quem <strong>fecha</strong> (Closer)? Ou o mesmo corretor faz tudo, diluindo esforço e eficiência?</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Pós-venda e relacionamento</div>
-          <div class="f-text">Após o contrato assinado, qual é a jornada do comprador? <strong>Compradores satisfeitos geram indicações espontâneas</strong> — mas só se houver um processo de relacionamento pós-venda.</div>
-        </div>
-        <div class="f f--alert">
-          <div class="f-tag">Programa de indicação</div>
-          <div class="f-text">Existe um <strong>programa formal de indicação</strong> com incentivo para compradores que trazem novos clientes? Esse canal gera leads com CAC de 3 a 5 vezes menor que mídia paga.</div>
-        </div>
-        <div class="f f--ok">
-          <div class="f-tag f-tag--ok">Oportunidade</div>
-          <div class="f-text">A base de compradores históricos da Ábaco é um <strong>ativo de geração de leads praticamente inexplorado</strong>. Um programa bem estruturado pode gerar 30–40% dos novos leads sem custo de mídia adicional.</div>
-        </div>
-      </div>
-      <div>
-        <span class="eyebrow r">03 · Diagnóstico Comercial</span>
-        <h2 class="s-title r r1">CRM, time<br>e base<br><em>inexplorada.</em></h2>
-        <p class="s-sub r r2">O que acontece com os leads que não fecharam? O que acontece com quem já comprou? Essas duas perguntas escondem a maior oportunidade de receita da Ábaco.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S9 · O CUSTO DAS LACUNAS
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s9">
-  <div class="w">
-    <span class="eyebrow r">O que está em jogo</span>
-    <h2 class="s-title r r1">Cada lacuna<br>não resolvida é<br><em>receita perdida.</em></h2>
-    <div class="cost-grid r r2">
-      <div class="cost-card">
-        <div class="cost-n">80%</div>
-        <div class="cost-l">Queda na conversão sem 5 min de resposta</div>
-        <div class="cost-t">Leads imobiliários contactados em mais de 5 minutos têm 80% menos chance de converter. O tempo de resposta é o CRO mais simples e mais ignorado do setor.</div>
-      </div>
-      <div class="cost-card cost-card--hi">
-        <div class="cost-n">73%</div>
-        <div class="cost-l">Dos leads nunca reativados</div>
-        <div class="cost-t">Em média, 73% dos leads que não converteram na primeira abordagem são abandonados. Uma estratégia de reativação pode recuperar até 30% dessa base.</div>
-      </div>
-      <div class="cost-card">
-        <div class="cost-n">3–5×</div>
-        <div class="cost-l">Custo menor por lead de indicação</div>
-        <div class="cost-t">Leads de indicação têm CAC de 3 a 5× menor que mídia paga e taxa de conversão significativamente maior. A base da Ábaco é um ativo inexplorado.</div>
-      </div>
-    </div>
-    <div class="quote-band" style="margin-top:2px">
-      <p class="quote-band-q r">Sem dados de <em>CPL, MQL, SQL, close rate e LTV,</em> toda decisão de investimento em marketing é chute.</p>
-      <p class="quote-band-p r r1">O primeiro passo da V4 é mapear esses números internos e compará-los com benchmarks do mercado imobiliário de alto desempenho. É a partir daí que o plano real começa.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S10 · MÉTODO V4
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s10" style="background:var(--surface)">
-  <div class="w">
-    <div style="text-align:center; margin-bottom:20px">
-      <span class="eyebrow r" style="display:inline-block">A Metodologia</span>
-      <h2 class="s-title r r1" style="display:inline-block">Método V4 —<br>Sistema Cíclico<br><em>de Crescimento</em></h2>
-      <p class="s-sub r r2" style="max-width:560px; margin:12px auto 0; text-align:center">Não é um funil linear. É um sistema onde cada pilar alimenta o próximo — validado em 5.500 empresas ao longo de 12 anos.</p>
-    </div>
-    <div class="m-grid r r3">
-      <div class="m-card">
-        <div class="m-idx">01</div>
-        <div class="m-name">Aquisição</div>
-        <div class="m-desc">Como a Ábaco atrai e captura leads. Volume importa, mas qualidade define o custo de todo o funil.</div>
-        <div class="m-items">
-          <span class="m-item">Tráfego pago Meta e Google</span>
-          <span class="m-item">ICP e segmentação de audiência</span>
-          <span class="m-item">Landing pages por empreendimento</span>
-          <span class="m-item">SEO e busca orgânica</span>
-          <span class="m-item">CPL e benchmark de mercado</span>
-        </div>
-      </div>
-      <div class="m-card" style="border-left:2px solid var(--border)">
-        <div class="m-idx" style="color:var(--faint)">02</div>
-        <div class="m-name">Engajamento</div>
-        <div class="m-desc">O que acontece entre o primeiro contato e a decisão de compra. A maioria das empresas perde a venda aqui.</div>
-        <div class="m-items">
-          <span class="m-item">Nutrição por WhatsApp e e-mail</span>
-          <span class="m-item">Conteúdo de prova social</span>
-          <span class="m-item">Remarketing segmentado</span>
-          <span class="m-item">Automação de CRM</span>
-          <span class="m-item">SLA marketing → comercial</span>
-        </div>
-      </div>
-      <div class="m-card" style="border-left:2px solid var(--border)">
-        <div class="m-idx" style="color:var(--faint)">03</div>
-        <div class="m-name">Monetização</div>
-        <div class="m-desc">Como o funil transforma interesse em receita. Scripts, objeções, cadência. Aqui mora o maior delta entre empresas iguais no produto.</div>
-        <div class="m-items">
-          <span class="m-item">Processo comercial mapeado</span>
-          <span class="m-item">Scripts por empreendimento</span>
-          <span class="m-item">Cadência de follow-up</span>
-          <span class="m-item">Análise de conversão por etapa</span>
-          <span class="m-item">Separação SDR / Closer</span>
-        </div>
-      </div>
-      <div class="m-card" style="border-left:2px solid var(--border)">
-        <div class="m-idx" style="color:var(--faint)">04</div>
-        <div class="m-name">Retenção</div>
-        <div class="m-desc">O comprador fechou. E agora? Retenção gera indicações com CAC próximo de zero e alimenta o topo do funil.</div>
-        <div class="m-items">
-          <span class="m-item">Jornada pós-venda estruturada</span>
-          <span class="m-item">Programa de indicações</span>
-          <span class="m-item">Régua de relacionamento</span>
-          <span class="m-item">NPS e reputação digital</span>
-          <span class="m-item">Comunidade de compradores</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S11 · A ESTRUTURAÇÃO ESTRATÉGICA
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s11">
-  <div class="w">
-    <span class="eyebrow r">O que a V4 entrega</span>
-    <h2 class="s-title r r1">Estruturação<br>Estratégica.<br><em>Completa.</em></h2>
-    <p class="s-sub r r2" style="max-width:600px; margin-bottom:20px">Não existe prazo arbitrário — existe entrega de qualidade. A Estruturação Estratégica percorre todas as etapas do funil da Ábaco, de ponta a ponta.</p>
-    <div class="ee-grid r r3">
-      <div class="ee-card">
-        <div class="ee-head">
-          <div class="ee-phase">01</div>
-          <div class="ee-label">Discovery</div>
-        </div>
-        <div class="ee-body">
-          <div class="ee-theme">Mercado & ICP</div>
-          <div class="ee-items">
-            <span class="ee-item">Entrevistas marketing e comercial</span>
-            <span class="ee-item">Análise de concorrentes regionais</span>
-            <span class="ee-item">ICP e persona por empreendimento</span>
-            <span class="ee-item">TAM / SAM / SOM de loteamentos</span>
-            <span class="ee-item">SWOT com dados de mercado</span>
+      <div class="r d2">
+        <div class="g2" style="margin-bottom:2px">
+          <div class="card card--lift">
+            <div class="ftag--ok" style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:6px">Agência SP (antes)</div>
+            <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:20px; color:var(--text); text-transform:uppercase; margin-bottom:10px; line-height:1.1">Gestão de tráfego e criativo</div>
+            <div class="ct">Entregou leads. Não olhou para a conversão. <strong>Triplicou o custo</strong> sem mudar o resultado de vendas.</div>
+          </div>
+          <div class="card card--red">
+            <div class="ftag" style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-bottom:6px">V4 Company</div>
+            <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:20px; color:var(--text); text-transform:uppercase; margin-bottom:10px; line-height:1.1">Diagnóstico, processo e venda</div>
+            <div class="ct">Entra no funil de ponta a ponta. <strong>Olha para a última linha: o contrato assinado,</strong> não o lead gerado.</div>
           </div>
         </div>
-      </div>
-      <div class="ee-card">
-        <div class="ee-head">
-          <div class="ee-phase">02</div>
-          <div class="ee-label">Diagnóstico Digital</div>
-        </div>
-        <div class="ee-body">
-          <div class="ee-theme">Mídia, Criativos e Tracking</div>
-          <div class="ee-items">
-            <span class="ee-item">Auditoria Meta e Google Ads</span>
-            <span class="ee-item">Auditoria de pixel e eventos</span>
-            <span class="ee-item">Análise de criativos e ângulos</span>
-            <span class="ee-item">Avaliação de landing pages</span>
-            <span class="ee-item">Benchmark de CPL e ROAS</span>
-          </div>
-        </div>
-      </div>
-      <div class="ee-card">
-        <div class="ee-head">
-          <div class="ee-phase">03</div>
-          <div class="ee-label">Diagnóstico Comercial</div>
-        </div>
-        <div class="ee-body">
-          <div class="ee-theme">Pipeline e Processo</div>
-          <div class="ee-items">
-            <span class="ee-item">Mapeamento do pipeline completo</span>
-            <span class="ee-item">Taxas de conversão por etapa</span>
-            <span class="ee-item">Auditoria do CRM</span>
-            <span class="ee-item">Velocidade e cadência de atendimento</span>
-            <span class="ee-item">Análise de motivos de perda</span>
-          </div>
-        </div>
-      </div>
-      <div class="ee-card">
-        <div class="ee-head">
-          <div class="ee-phase">04</div>
-          <div class="ee-label">Estratégia</div>
-        </div>
-        <div class="ee-body">
-          <div class="ee-theme">Posicionamento e PUV</div>
-          <div class="ee-items">
-            <span class="ee-item">PUV por empreendimento</span>
-            <span class="ee-item">Arquitetura de conteúdo TOFU/MOFU/BOFU</span>
-            <span class="ee-item">Scripts e argumentários de venda</span>
-            <span class="ee-item">Fluxo de automação WhatsApp + CRM</span>
-            <span class="ee-item">Programa de indicações</span>
-          </div>
-        </div>
-      </div>
-      <div class="ee-card">
-        <div class="ee-head">
-          <div class="ee-phase">05</div>
-          <div class="ee-label">Plano e Execução</div>
-        </div>
-        <div class="ee-body">
-          <div class="ee-theme">Mídia, Roadmap e Projeção</div>
-          <div class="ee-items">
-            <span class="ee-item">Plano de mídia detalhado por canal</span>
-            <span class="ee-item">Briefings criativos prontos</span>
-            <span class="ee-item">Banco de copy por empreendimento</span>
-            <span class="ee-item">Roadmap de execução priorizado</span>
-            <span class="ee-item">Projeção de leads, conversão e receita</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S12 · ENTREGÁVEIS
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s12" style="background:var(--surface)">
-  <div class="w">
-    <div class="split">
-      <div>
-        <span class="eyebrow r">Entregáveis</span>
-        <h2 class="s-title r r1">O que a Ábaco<br><em>recebe.</em></h2>
-        <p class="s-sub r r2">Cada entregável é um documento de uso imediato — não um relatório para engavetar. O time executa com base nesses materiais no dia seguinte à entrega.</p>
-        <div style="margin-top:20px; padding:16px 18px; background:var(--red-lo); border-left:2px solid var(--red)" class="r r3">
-          <div style="font-family:'Space Grotesk',sans-serif; font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--red); margin-bottom:6px">Garantia V4</div>
-          <div style="font-size:12px; line-height:1.6; color:var(--text); font-weight:300">Se a Ábaco não receber todos os entregáveis acordados, devolvemos o investimento. Sem burocracia.</div>
-        </div>
-      </div>
-      <div class="d-grid r r2" style="margin-top:0">
-        <div class="d-card">
-          <div class="d-num">01</div>
-          <div class="d-name">Diagnóstico Estratégico Completo</div>
-          <div class="d-desc">Mercado, ICP, concorrentes, SWOT com dados reais e oportunidades prioritárias mapeadas.</div>
-        </div>
-        <div class="d-card" style="background:var(--lift)">
-          <div class="d-num">02</div>
-          <div class="d-name">Auditoria de Marketing Digital</div>
-          <div class="d-desc">Análise crítica de mídia paga, pixel, criativos, landing pages e comparação com benchmarks do setor.</div>
-        </div>
-        <div class="d-card">
-          <div class="d-num">03</div>
-          <div class="d-name">Arquitetura Comercial</div>
-          <div class="d-desc">Pipeline documentado, scripts de venda, SLA marketing/comercial e fluxo de automação de CRM.</div>
-        </div>
-        <div class="d-card" style="background:var(--lift)">
-          <div class="d-num">04</div>
-          <div class="d-name">PUV e Banco de Copy</div>
-          <div class="d-desc">Proposta de valor única por empreendimento, argumentos de venda e briefings prontos para criação.</div>
-        </div>
-        <div class="d-card">
-          <div class="d-num">05</div>
-          <div class="d-name">Plano de Mídia e Roadmap</div>
-          <div class="d-desc">Plano por canal e empreendimento com projeção de leads, conversão e receita estimada.</div>
-        </div>
-        <div class="d-card" style="background:var(--red-lo); border:1px solid var(--red-mid)">
-          <div class="d-num" style="color:var(--red)">06</div>
-          <div class="d-name">Apresentação para Liderança</div>
-          <div class="d-desc">Diagnóstico consolidado e plano estratégico apresentados ao time de decisão da Ábaco.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     S13 · COMO A V4 SOMA
-══════════════════════════════════════════════════════════════════ -->
-<section class="snap" id="s13">
-  <div class="w">
-    <div class="split">
-      <div>
-        <span class="eyebrow r">Nossa posição</span>
-        <h2 class="s-title r r1">Não viemos<br>substituir.<br><em>Viemos somar.</em></h2>
-        <p class="s-sub r r2">O time de marketing e o comercial da Ábaco têm o que a V4 nunca vai ter: conhecimento profundo do produto, dos empreendimentos e dos clientes. <strong>Nosso papel é complementar com o que é difícil de construir internamente.</strong></p>
-        <p class="s-sub r r3" style="margin-top:10px">Trazemos visão comparativa, benchmark de mercado, metodologia testada em 5.500 empresas e a capacidade de enxergar o que não é visível de dentro.</p>
-        <p class="s-sub r r4" style="margin-top:10px">O resultado não é uma apresentação para a gaveta. É um <strong>plano que o time executa</strong> — com mais clareza, dados e direção do que teria sem o processo.</p>
-      </div>
-      <div class="r r2">
-        <div class="table-wrap">
-          <table class="cmp">
+        <div style="overflow-x:auto">
+          <table class="dtable">
             <thead>
               <tr>
                 <th>Dimensão</th>
-                <th>Time Ábaco</th>
-                <th>V4 adiciona</th>
+                <th>Agência operacional</th>
+                <th>V4 Company</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Conhecimento do produto</td><td class="yes">✓ Profundo</td><td class="no">—</td></tr>
-              <tr><td>Relacionamento com leads</td><td class="yes">✓ Histórico</td><td class="no">—</td></tr>
-              <tr><td>Benchmark do mercado</td><td class="no">Limitado</td><td class="yes">✓ 5.500 casos</td></tr>
-              <tr><td>Diagnóstico externo do funil</td><td class="no">Limitado</td><td class="yes">✓ Metodologia</td></tr>
-              <tr><td>Comparação com concorrentes</td><td class="no">Parcial</td><td class="yes">✓ Análise dedicada</td></tr>
-              <tr><td>Dados de CPL, close rate, LTV</td><td class="no">Sem análise</td><td class="yes">✓ Auditoria + benchmark</td></tr>
-              <tr><td>Scripts e argumentários</td><td class="no">Em construção</td><td class="yes">✓ Validados e entregues</td></tr>
-              <tr><td>Plano de mídia com projeção</td><td class="no">Informal</td><td class="yes">✓ Entregável completo</td></tr>
-              <tr><td>Execução de campanhas</td><td class="yes">✓ Time interno</td><td class="yes">✓ Opcional (pós-EE)</td></tr>
+              <tr><td>Geração de leads</td><td class="ok">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Analisa taxa de conversão</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Diagnóstico de processo comercial</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Script e treinamento de vendas</td><td class="no">—</td><td class="yes">✓</td></tr>
+              <tr><td>Benchmark de mercado</td><td class="no">—</td><td class="yes">✓ 6.000+ clientes</td></tr>
+              <tr><td>Olha para o contrato assinado</td><td class="no">—</td><td class="yes">✓ Sempre</td></tr>
             </tbody>
           </table>
         </div>
@@ -1365,80 +831,400 @@ body {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════
-     S14 · PRÓXIMOS PASSOS
-══════════════════════════════════════════════════════════════════ -->
-<div class="cta-wrap snap" id="s14">
-  <div class="cta-bg" aria-hidden="true">V4</div>
-  <div class="cta-content">
-    <div class="cta-ey r">Próximos Passos</div>
-    <h2 class="cta-h r r1">Marketing<br>à altura<br>do produto.</h2>
-    <p class="cta-s r r2">A Ábaco tem 45 anos de história, produto sólido e presença consolidada no Sul do Brasil. O próximo passo é ter um sistema de marketing e comercial na mesma altura.</p>
-    <div class="cta-steps r r3">
+<!-- ══ S6 · O FUNIL DA ÁBACO HOJE ═══════════════════════════════ -->
+<section class="snap" id="s6" style="background:var(--surface)">
+  <div class="w">
+    <span class="ey r">Onde está o gargalo</span>
+    <h2 class="h1 r d1">O funil da Ábaco<br><em>como ele funciona hoje.</em></h2>
+    <p class="body r d2" style="max-width:640px">Lead chega pelo digital. É distribuído pelo sistema para imobiliário parceiro ou corretor house. O coordenador recebe feedback. A mesma pessoa que faz o primeiro contato tenta fechar. Sem separação, sem padrão, sem cadência definida.</p>
+    <div class="flow r d3">
+      <div class="flow-step flow-step--active">
+        <div class="fs-n">01</div>
+        <div class="fs-name">Geração</div>
+        <div class="fs-tag fs-tag--ok">Funciona</div>
+        <div class="fs-items">
+          <div class="fs-item">R$120k/mês em digital</div>
+          <div class="fs-item">Time de 16 pessoas</div>
+          <div class="fs-item">Critérios de segmentação</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step--active">
+        <div class="fs-n">02</div>
+        <div class="fs-name">Distribuição</div>
+        <div class="fs-tag fs-tag--ok">Funciona</div>
+        <div class="fs-items">
+          <div class="fs-item">CRM proprietário</div>
+          <div class="fs-item">Distribui para corretor ou imobiliária</div>
+          <div class="fs-item">Coordenador por estado</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step--problem">
+        <div class="fs-n">03</div>
+        <div class="fs-name">1º Contato</div>
+        <div class="fs-tag">Gargalo</div>
+        <div class="fs-items">
+          <div class="fs-item">Sem SDR dedicado</div>
+          <div class="fs-item">Tempo de resposta não monitorado</div>
+          <div class="fs-item">Sem script padronizado</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step--problem">
+        <div class="fs-n">04</div>
+        <div class="fs-name">Qualificação</div>
+        <div class="fs-tag">Gargalo</div>
+        <div class="fs-items">
+          <div class="fs-item">Sem critério MQL/SQL formal</div>
+          <div class="fs-item">Mesma pessoa do 1º contato</div>
+          <div class="fs-item">Abordagem inconsistente</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step--problem">
+        <div class="fs-n">05</div>
+        <div class="fs-name">Fechamento</div>
+        <div class="fs-tag">Gargalo</div>
+        <div class="fs-items">
+          <div class="fs-item">Sem Closer dedicado</div>
+          <div class="fs-item">15–40 dias sem cadência clara</div>
+          <div class="fs-item">Alta variação entre estados</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="fs-n">06</div>
+        <div class="fs-name">Pós-venda</div>
+        <div class="fs-tag">Inexplorado</div>
+        <div class="fs-items">
+          <div class="fs-item">60k leads sem reativação</div>
+          <div class="fs-item">Sem programa de indicação</div>
+          <div class="fs-item">Base = ativo parado</div>
+        </div>
+      </div>
+    </div>
+    <div class="qstrip r d4">
+      <p class="qtext">"a gente queria terceirizar essa parte de venda — <em>desde a geração de lead até o fechamento</em>"</p>
+      <p class="qdesc">Roberto quer ponta a ponta. A V4 tem isso. Mas antes de executar, a gente diagnostica — para não repetir o erro da agência SP que executou sem entender o problema.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S7 · A BASE DE 60K LEADS ═════════════════════════════════ -->
+<section class="snap" id="s7">
+  <div class="w">
+    <div class="split--half">
+      <div>
+        <span class="ey r">A maior oportunidade sem custo adicional</span>
+        <h2 class="h1 r d1">60.000 leads.<br>5 anos de interesse.<br><em>Inexplorado.</em></h2>
+        <p class="body r d2">Vocês têm uma das maiores bases de leads do mercado de loteamentos do Sul do Brasil. Cada lead nessa base já demonstrou intenção de compra. A maioria nunca foi reativada sistematicamente.</p>
+        <p class="body r d3"><strong>Reativação de base não é mais mídia paga. É processo, copy e cadência.</strong> A V4 tem metodologia para isso: segmentação por empreendimento, estágio de interesse e tempo de inatividade.</p>
+        <p class="body r d4">Em mercados com ciclo de decisão de 15–40 dias, leads que chegaram há 6, 12 ou 24 meses podem estar prontos para comprar agora. <strong>Mas ninguém está perguntando.</strong></p>
+      </div>
+      <div class="r d2">
+        <div class="g2" style="margin-bottom:2px">
+          <div class="card">
+            <div class="cn cn--red">3–5×</div>
+            <div class="cl">Menor CAC vs. mídia paga</div>
+            <div class="ct">Reativação de base custa de 3 a 5 vezes menos do que gerar um novo lead via tráfego pago. O investimento já foi feito.</div>
+          </div>
+          <div class="card card--lift">
+            <div class="cn cn--red">2×</div>
+            <div class="cl">Taxa de conversão maior</div>
+            <div class="ct">Leads que já demonstraram interesse convertem em média 2x mais que leads frios vindos de novas campanhas.</div>
+          </div>
+        </div>
+        <div class="flist">
+          <div class="f f--hot">
+            <div class="ftag">O que a V4 faz com a base</div>
+            <div class="ft">Segmenta por empreendimento, perfil e data de entrada. Cria cadências de reativação específicas por WhatsApp e e-mail. <strong>A base vira canal ativo de vendas.</strong></div>
+          </div>
+          <div class="f f--hot">
+            <div class="ftag">Prioridade imediata</div>
+            <div class="ft">Antes de gastar mais R$120k/mês em novos leads, <strong>a gente trabalha os 60k que já existem.</strong> Esse é o caminho mais rápido para resultado.</div>
+          </div>
+          <div class="f f--ok">
+            <div class="ftag f-tag--ok">O CRM já tem os dados</div>
+            <div class="ft">Vocês desenvolveram o melhor CRM do setor, na visão de Roberto. Tudo está rastreado. Falta <strong>o processo de uso ativo dessa informação</strong> para reativação.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S8 · OS LANÇAMENTOS DE 2027 ══════════════════════════════ -->
+<section class="snap" id="s8" style="background:var(--surface)">
+  <div class="w">
+    <div class="split--rev split">
+      <div class="r">
+        <div class="g2" style="margin-bottom:2px">
+          <div class="card card--lift">
+            <div class="cn cn--red">Set/26</div>
+            <div class="cl">Próximo lançamento</div>
+            <div class="ct">Já tem identidade visual criada. A estratégia de marketing e o processo de vendas precisam estar prontos antes do dia 9 de setembro.</div>
+          </div>
+          <div class="card">
+            <div class="cn cn--red">4</div>
+            <div class="cl">Lançamentos confirmados para 2027</div>
+            <div class="ct">Quatro empreendimentos mínimos. Com R$2bi em estoque atual + esses novos VGVs, a Ábaco vai precisar de estrutura comercial e de marketing muito mais robusta.</div>
+          </div>
+        </div>
+        <div class="flist">
+          <div class="f f--hot">
+            <div class="ftag">A estrutura precisa estar pronta antes do lançamento</div>
+            <div class="ft">SDR treinado, script validado, cadência de follow-up testada, integração CRM funcionando. <strong>Lançar sem processo é gerar mais leads sem conversão.</strong></div>
+          </div>
+          <div class="f f--hot">
+            <div class="ftag">Estoque + novos lançamentos = R$6–7bi em venda</div>
+            <div class="ft">Roberto disse isso na call. Com esse volume, <strong>não dá para operar com processo fraco.</strong> A escala exige estrutura proporcional.</div>
+          </div>
+          <div class="f f--hot">
+            <div class="ftag">Terceirizar ou estruturar — a decisão é agora</div>
+            <div class="ft">Antes do próximo lançamento, a Ábaco precisa decidir: assumir a venda com processo próprio reestruturado, <strong>ou ter a V4 operando ponta a ponta.</strong> A V4 entrega os dois caminhos.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="ey r">Próximos lançamentos</span>
+        <h2 class="h1 r d1">Setembro 2026.<br>Quatro em 2027.<br><em>A estrutura<br>precisa estar pronta.</em></h2>
+        <p class="body r d2">Com o estoque atual de R$2 bilhões e mais 4 lançamentos previstos para 2027, a Ábaco vai ter de R$6 a R$7 bilhões em volume para vender. <strong>A estrutura comercial atual não acompanha essa escala.</strong></p>
+        <p class="body r d3">O lançamento de setembro está com identidade visual pronta. <strong>O que ainda não está pronto é o processo que vai converter os leads desse lançamento em contratos.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S9 · O QUE A V4 TRAZ ═════════════════════════════════════ -->
+<section class="snap" id="s9">
+  <div class="w">
+    <span class="ey r">O que a V4 resolve</span>
+    <h2 class="h1 r d1">Ponta a ponta.<br><em>Do lead ao<br>contrato assinado.</em></h2>
+    <p class="body r d2" style="max-width:600px; margin-bottom:20px">A V4 tem os dois caminhos que Ivan apresentou na call: executar ponta a ponta para a Ábaco, ou entrar como consultora que diagnostica e estrutura o processo do time. Aqui está o que cada caminho entrega.</p>
+    <div class="pillars r d3">
+      <div class="pillar">
+        <div class="p-idx">01</div>
+        <div class="p-name">Diagnóstico</div>
+        <div class="p-desc">Entrar nos dados, entender o funil real, comparar com benchmark de mercado. A gente não chuta — analisa.</div>
+        <div class="p-items">
+          <span class="p-item">Auditoria de mídia e criativos</span>
+          <span class="p-item">Análise de taxa de conversão por etapa</span>
+          <span class="p-item">Mapeamento do processo comercial</span>
+          <span class="p-item">Benchmark com 6.000+ clientes V4</span>
+        </div>
+      </div>
+      <div class="pillar" style="border-left:1px solid var(--border)">
+        <div class="p-idx" style="color:var(--faint)">02</div>
+        <div class="p-name">Estrutura</div>
+        <div class="p-desc">Montar o que falta: SDR, Closer, script, cadência, SLA, rotinas. Padronizar os 5 estados.</div>
+        <div class="p-items">
+          <span class="p-item">Separação SDR / Closer</span>
+          <span class="p-item">Scripts por empreendimento e perfil</span>
+          <span class="p-item">Cadência de follow-up estruturada</span>
+          <span class="p-item">Rotinas de revisão de pipeline</span>
+        </div>
+      </div>
+      <div class="pillar" style="border-left:1px solid var(--border)">
+        <div class="p-idx" style="color:var(--faint)">03</div>
+        <div class="p-name">Reativação</div>
+        <div class="p-desc">Ativar os 60k leads da base. Receita imediata sem custo adicional de mídia.</div>
+        <div class="p-items">
+          <span class="p-item">Segmentação da base por perfil</span>
+          <span class="p-item">Cadências de reativação por WhatsApp</span>
+          <span class="p-item">Campanha de estoque atual</span>
+          <span class="p-item">Integração com CRM proprietário</span>
+        </div>
+      </div>
+      <div class="pillar" style="border-left:1px solid var(--border)">
+        <div class="p-idx" style="color:var(--faint)">04</div>
+        <div class="p-name">Execução</div>
+        <div class="p-desc">A V4 pode operar. Time de SDR e mídia da V4 rodando em paralelo para testar contra o time atual.</div>
+        <div class="p-items">
+          <span class="p-item">Canal paralelo de geração e atendimento</span>
+          <span class="p-item">Time V4 de SDR para qualificação</span>
+          <span class="p-item">Operação ponta a ponta opcional</span>
+          <span class="p-item">Teste A/B: V4 vs. time atual</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S10 · MÉTODO V4 ══════════════════════════════════════════ -->
+<section class="snap" id="s10" style="background:var(--surface)">
+  <div class="w">
+    <div class="split">
+      <div>
+        <span class="ey r">A Metodologia</span>
+        <h2 class="h1 r d1">Método V4:<br>sistema cíclico<br><em>de crescimento.</em></h2>
+        <p class="body r d2">Não é um funil linear. É um sistema onde cada etapa alimenta a próxima — validado em mais de <strong>6.000 empresas ativas</strong>. Aplicado à Ábaco, o método conecta a geração de lead existente ao processo comercial que hoje está quebrado.</p>
+        <p class="body r d3">Os benchmarks que a V4 usa não são do mercado genérico. São de empresas que a gente atende — com dados reais de funil, conversão, script e cadência. <strong>Isso é o que Ivan chamou de "cruzar com dados que a gente tem dentro de casa."</strong></p>
+      </div>
+      <div class="r d2">
+        <div class="g2">
+          <div class="card">
+            <div class="p-idx" style="font-family:'Oswald',sans-serif; font-size:40px; color:var(--faint); font-weight:700; letter-spacing:-.03em; margin-bottom:8px">01</div>
+            <div class="p-name" style="font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; text-transform:uppercase; color:var(--text); margin-bottom:6px">Aquisição</div>
+            <div class="ct">Qualidade e custo do lead. ICP refinado por empreendimento. Benchmark de CPL e ROAS para loteamentos de alto padrão.</div>
+          </div>
+          <div class="card card--lift">
+            <div class="p-idx" style="font-family:'Oswald',sans-serif; font-size:40px; color:var(--faint); font-weight:700; letter-spacing:-.03em; margin-bottom:8px">02</div>
+            <div class="p-name" style="font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; text-transform:uppercase; color:var(--text); margin-bottom:6px">Engajamento</div>
+            <div class="ct">Do primeiro contato à visita. SDR, cadência, WhatsApp, CRM. O que acontece entre o clique e o "vou pensar" virar agenda.</div>
+          </div>
+          <div class="card card--lift">
+            <div class="p-idx" style="font-family:'Oswald',sans-serif; font-size:40px; color:var(--faint); font-weight:700; letter-spacing:-.03em; margin-bottom:8px">03</div>
+            <div class="p-name" style="font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; text-transform:uppercase; color:var(--text); margin-bottom:6px">Monetização</div>
+            <div class="ct">Closer dedicado, script por empreendimento, objeções mapeadas. A última etapa que transforma agenda em contrato assinado.</div>
+          </div>
+          <div class="card">
+            <div class="p-idx" style="font-family:'Oswald',sans-serif; font-size:40px; color:var(--faint); font-weight:700; letter-spacing:-.03em; margin-bottom:8px">04</div>
+            <div class="p-name" style="font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; text-transform:uppercase; color:var(--text); margin-bottom:6px">Retenção</div>
+            <div class="ct">Comprador vira indicador. Programa de indicação, pós-venda estruturado. Os 60k da base como canal permanente de receita.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S11 · ENTREGÁVEIS ════════════════════════════════════════ -->
+<section class="snap" id="s11">
+  <div class="w">
+    <span class="ey r">O que vocês recebem</span>
+    <h2 class="h1 r d1">Entregáveis<br><em>prontos para usar.</em></h2>
+    <p class="body r d2" style="max-width:580px; margin-bottom:22px">Não é consultoria para a gaveta. Cada entregável é um instrumento que o time de marketing e o time comercial colocam em prática na semana seguinte.</p>
+    <div class="g3 r d3">
+      <div class="card">
+        <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:26px; color:var(--red); margin-bottom:10px; line-height:1">01</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px">Diagnóstico do Funil Completo</div>
+        <div class="ct">Taxa de conversão por etapa, onde está o gargalo, comparativo com benchmark do mercado imobiliário. Com os dados do CRM de vocês.</div>
+      </div>
+      <div class="card card--lift">
+        <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:26px; color:var(--red); margin-bottom:10px; line-height:1">02</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px">Estrutura SDR + Closer</div>
+        <div class="ct">Definição de papéis, perfis, critérios de passagem, SLA entre SDR e Closer. Padronizado para os 5 estados de operação.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:26px; color:var(--red); margin-bottom:10px; line-height:1">03</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px">Scripts e Argumentários</div>
+        <div class="ct">Scripts de primeiro contato, qualificação e fechamento por empreendimento. Tratamento de objeções mais comuns do mercado de lotes de alto padrão.</div>
+      </div>
+      <div class="card card--lift">
+        <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:26px; color:var(--red); margin-bottom:10px; line-height:1">04</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px">Plano de Reativação — 60k Leads</div>
+        <div class="ct">Segmentação da base, cadências de reativação por WhatsApp e e-mail, integração com o CRM proprietário. Ativação imediata do estoque de interesse existente.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:26px; color:var(--red); margin-bottom:10px; line-height:1">05</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px">Plano de Mídia e Lançamentos</div>
+        <div class="ct">Estratégia de mídia para o estoque atual e para setembro/2026. Projeção de leads, conversão e receita para os 4 lançamentos de 2027.</div>
+      </div>
+      <div class="card card--red">
+        <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:26px; color:var(--red); margin-bottom:10px; line-height:1">06</div>
+        <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px">Apresentação para o Board</div>
+        <div class="ct">Diagnóstico completo + plano estratégico apresentados para Roberto, José e os times de marketing e comercial. Com dados, benchmarks e roadmap de execução.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S12 · COMO A V4 SOMA ═════════════════════════════════════ -->
+<section class="snap" id="s12" style="background:var(--surface)">
+  <div class="w">
+    <div class="split">
+      <div>
+        <span class="ey r">Nossa posição</span>
+        <h2 class="h1 r d1">Não substituímos<br>o time.<br><em>Somamos o que falta.</em></h2>
+        <p class="body r d2">A Ábaco tem 16 pessoas no marketing, CRM proprietário e time comercial estruturado em 5 estados. <strong>A V4 não chega para refazer o que existe — chega para adicionar o que falta.</strong></p>
+        <p class="body r d3">O que falta: visão de fora, benchmarks de mercado, separação SDR/Closer, scripts validados, processo de reativação e alguém que olhe para a conversão em contrato — não só para o lead gerado.</p>
+        <div class="vquote r d4" style="margin-top:16px">
+          <div class="vquote-text">"hoje a V4 tem mais de 6.000 clientes. Eu tenho muita informação dentro de casa que eu consigo trocar com vocês num papel de consultoria."</div>
+          <div class="vquote-attr">Ivan Felipe · Call V4 × Ábaco</div>
+        </div>
+      </div>
+      <div class="r d2">
+        <div style="overflow-x:auto">
+          <table class="dtable">
+            <thead>
+              <tr>
+                <th>Dimensão</th>
+                <th>Time Ábaco</th>
+                <th>V4 soma</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Conhecimento dos empreendimentos</td><td class="ok">✓ Profundo</td><td class="no">—</td></tr>
+              <tr><td>CRM e rastreabilidade de lead</td><td class="ok">✓ Proprietário</td><td class="no">—</td></tr>
+              <tr><td>Time de marketing (16 pessoas)</td><td class="ok">✓ Estruturado</td><td class="no">—</td></tr>
+              <tr><td>Benchmark de conversão do setor</td><td class="no">Não tem</td><td class="yes">✓ 6.000 clientes</td></tr>
+              <tr><td>Diagnóstico de funil com dados</td><td class="no">Não tem</td><td class="yes">✓ Metodologia</td></tr>
+              <tr><td>Separação SDR / Closer</td><td class="no">Não tem</td><td class="yes">✓ Estruturado</td></tr>
+              <tr><td>Script validado por empreendimento</td><td class="no">Não tem</td><td class="yes">✓ Entregável</td></tr>
+              <tr><td>Reativação dos 60k leads</td><td class="no">Não sistemático</td><td class="yes">✓ Plano completo</td></tr>
+              <tr><td>Olhar para o contrato assinado</td><td class="no">Não formalizado</td><td class="yes">✓ Sempre</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight r d3" style="margin-top:2px">
+          <div class="hl-n">Garantia</div>
+          <div class="hl-div"></div>
+          <p class="hl-t">Se a Ábaco não receber todos os entregáveis acordados, <strong>a V4 devolve o investimento.</strong> Sem burocracia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S13 · PRÓXIMOS PASSOS ════════════════════════════════════ -->
+<div class="cta-wrap snap" id="s13">
+  <div class="cta-bg-txt" aria-hidden="true">V4</div>
+  <div class="cta-inner">
+    <div class="cta-ey r">Próximos passos</div>
+    <h2 class="cta-h r d1">Setembro bate<br>à porta.<br>R$2bi esperando.</h2>
+    <p class="cta-s r d2">O lançamento de setembro está com identidade pronta. Os 60k leads estão na base. Os 4 lançamentos de 2027 precisam de estrutura agora. A reunião com os times de marketing e comercial é o próximo passo.</p>
+    <div class="cta-steps r d3">
       <div class="cta-step">
-        <div class="cta-step-n">01</div>
-        <div class="cta-step-t">Alinhamento<br>com os times</div>
+        <div class="cta-sn">01</div>
+        <div class="cta-st">Reunião com<br>marketing + comercial</div>
       </div>
       <div class="cta-step">
-        <div class="cta-step-n">02</div>
-        <div class="cta-step-t">Proposta da<br>Estruturação</div>
+        <div class="cta-sn">02</div>
+        <div class="cta-st">Análise dos dados<br>do CRM de vocês</div>
       </div>
       <div class="cta-step">
-        <div class="cta-step-n">03</div>
-        <div class="cta-step-t">Diagnóstico<br>e entrega completa</div>
+        <div class="cta-sn">03</div>
+        <div class="cta-st">Proposta ponta<br>a ponta para Roberto</div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  /* ── REVEAL ON SCROLL ─────────────────────────────────────── */
-  const ro = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('v');
-        ro.unobserve(e.target);
-      }
-    });
+  /* ── REVEAL ─────────────────────────────────────────────────── */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); ro.unobserve(e.target); } });
   }, { threshold: 0.05 });
   document.querySelectorAll('.r').forEach(el => ro.observe(el));
 
-  /* ── DOT NAV ACTIVE STATE ─────────────────────────────────── */
+  /* ── DOT NAV ────────────────────────────────────────────────── */
   const snaps = Array.from(document.querySelectorAll('.snap, .cta-wrap'));
-  const dots  = Array.from(document.querySelectorAll('.dot-nav a'));
-
-  const so = new IntersectionObserver((entries) => {
+  const dots  = Array.from(document.querySelectorAll('.dots a'));
+  const so = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting && e.intersectionRatio > 0.5) {
-        const idx = snaps.indexOf(e.target);
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+        const i = snaps.indexOf(e.target);
+        dots.forEach((d, j) => d.classList.toggle('on', i === j));
       }
     });
   }, { threshold: 0.5 });
   snaps.forEach(s => so.observe(s));
 
-  /* ── KEYBOARD NAV ─────────────────────────────────────────── */
-  let currentIdx = 0;
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-      e.preventDefault();
-      currentIdx = Math.min(currentIdx + 1, snaps.length - 1);
-      snaps[currentIdx].scrollIntoView({ behavior: 'smooth' });
-    }
-    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-      e.preventDefault();
-      currentIdx = Math.max(currentIdx - 1, 0);
-      snaps[currentIdx].scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-
-  // keep currentIdx in sync with scroll
-  const ki = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && e.intersectionRatio > 0.5) {
-        currentIdx = snaps.indexOf(e.target);
-      }
-    });
+  /* ── KEYBOARD ───────────────────────────────────────────────── */
+  let cur = 0;
+  const ki = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting && e.intersectionRatio >= 0.5) cur = snaps.indexOf(e.target); });
   }, { threshold: 0.5 });
   snaps.forEach(s => ki.observe(s));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); cur = Math.min(cur + 1, snaps.length - 1); snaps[cur].scrollIntoView({ behavior: 'smooth' }); }
+    if (e.key === 'ArrowUp'   || e.key === 'PageUp'  ) { e.preventDefault(); cur = Math.max(cur - 1, 0); snaps[cur].scrollIntoView({ behavior: 'smooth' }); }
+  });
 </script>
