@@ -600,6 +600,98 @@ body {
   line-height: 1.4;
 }
 
+/* ─── LOGO PARADE ─────────────────────────────────────────────── */
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  background: var(--border);
+  margin-top: 24px;
+}
+.logo-cell {
+  background: var(--surface);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  flex: 1;
+}
+.logo-text {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+  filter: grayscale(1);
+  opacity: .55;
+  transition: opacity .2s, color .2s;
+}
+.logo-cell:hover .logo-text { opacity: 1; color: var(--text); }
+.agency-badge {
+  background: var(--red-lo);
+  border: 1px solid var(--red-mid);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 2px;
+}
+.ab-mark {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 52px;
+  color: var(--red);
+  line-height: 1;
+  letter-spacing: -.03em;
+  flex-shrink: 0;
+}
+.ab-div { width: 1px; height: 56px; background: var(--red-mid); flex-shrink: 0; }
+.ab-info {}
+.ab-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: var(--text);
+  letter-spacing: .02em;
+  margin-bottom: 4px;
+}
+.ab-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.ab-stats { display: flex; gap: 28px; }
+.ab-stat-n {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.ab-stat-l {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 3px;
+}
+@media (max-width: 680px) {
+  .agency-badge { flex-direction: column; gap: 16px; }
+  .ab-div { display: none; }
+  .ab-stats { gap: 18px; }
+}
+
 /* ─── REVEAL ──────────────────────────────────────────────────── */
 .r { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
 .r.v { opacity: 1; transform: none; }
@@ -642,7 +734,7 @@ body {
   <a href="#s1"></a><a href="#s2"></a><a href="#s3"></a><a href="#s4"></a>
   <a href="#s5"></a><a href="#s6"></a><a href="#s7"></a><a href="#s8"></a>
   <a href="#s9"></a><a href="#s10"></a><a href="#s11"></a><a href="#s12"></a>
-  <a href="#s13"></a>
+  <a href="#s13"></a><a href="#s14"></a>
 </nav>
 
 <!-- ══ S1 · HERO ════════════════════════════════════════════════ -->
@@ -682,71 +774,72 @@ body {
   </div>
 </section>
 
-<!-- ══ S2 · O QUE OUVIMOS NA CALL ═══════════════════════════════ -->
+<!-- ══ S2 · DIAGNÓSTICO INICIAL ═══════════════════════════════════ -->
 <section class="snap" id="s2" style="background:var(--surface)">
   <div class="w">
-    <span class="ey r">O que a gente ouviu</span>
-    <h2 class="h1 r d1">A Ábaco já<br>construiu muito.<br><em>E sabe disso.</em></h2>
+    <span class="ey r">O que já existe</span>
+    <h2 class="h1 r d1">A estrutura está<br>montada.<br><em>O processo, não.</em></h2>
     <div class="g4 r d2" style="margin-top:24px">
       <div class="card card--lift">
         <div class="cn">16</div>
         <div class="cl">Pessoas no marketing</div>
-        <div class="ct">Time interno de marketing montado, com produção de conteúdo, mídia paga e acompanhamento de indicadores.</div>
+        <div class="ct">Time interno estruturado, com produção de conteúdo, mídia paga e acompanhamento de indicadores — acima da média do setor de loteamentos.</div>
       </div>
       <div class="card">
         <div class="cn cn--red">R$120k</div>
         <div class="cl">Investimento mensal em digital</div>
-        <div class="ct">Volume de investimento relevante. Os leads chegam. A questão é o que acontece depois que eles chegam.</div>
+        <div class="ct">Volume que gera entrada constante de leads. O custo de aquisição está estabelecido. O problema não é o topo do funil — é o que vem depois.</div>
       </div>
       <div class="card card--lift">
         <div class="cn">CRM</div>
         <div class="cl">Proprietário, desenvolvido internamente</div>
-        <div class="ct">Faz tracking completo, disparo de e-mail e WhatsApp. Rastreabilidade e dados estão disponíveis — o problema não é falta de CRM.</div>
+        <div class="ct">Rastreabilidade completa: tracking, e-mail, WhatsApp. Os dados existem e estão disponíveis. A ausência não é de informação — é de processo que usa essa informação.</div>
       </div>
       <div class="card">
         <div class="cn cn--red">60k</div>
         <div class="cl">Leads acumulados em 5 anos</div>
-        <div class="ct">Uma das maiores oportunidades inexploradas da Ábaco. Essa base é ativo com potencial de receita imediata — sem custo adicional de mídia.</div>
+        <div class="ct">Base construída com R$1,44M/ano em investimento digital. Cada lead representa intenção de compra registrada — e um CAC já pago. Está parado no CRM sem reativação sistemática.</div>
       </div>
     </div>
-    <div class="qstrip r d3">
-      <p class="qtext">"a gente tem <em>muito desperdício de lead</em>, um investimento muito grande e acaba não fechando a venda"</p>
-      <p class="qdesc">Roberto, na call de diagnóstico. O ponto de partida da V4 não é questionar o que vocês têm — é resolver o que está travando o que já funciona.</p>
+    <div class="highlight r d3" style="margin-top:2px">
+      <div class="hl-n">R$1,44M</div>
+      <div class="hl-div"></div>
+      <p class="hl-t">Investimento acumulado em 12 meses de mídia digital para gerar uma base de leads que, <strong>na ausência de processo de reativação, deprecia a cada mês que passa.</strong> O ativo existe. O uso, não.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ S3 · ROBERTO TEM RAZÃO ═══════════════════════════════════ -->
+<!-- ══ S3 · O PROBLEMA NÃO É O LEAD ══════════════════════════════ -->
 <section class="snap" id="s3">
   <div class="w">
     <div class="split">
       <div>
         <span class="ey r">A tese central</span>
-        <h2 class="h1 r d1">O lead não é<br>o problema.<br><em>Roberto tem razão.</em></h2>
-        <p class="body r d2">Roberto foi preciso na call: <strong>"a forma que tá sendo abordada é que não tá certo"</strong> — não o lead em si. Quando a Ábaco bota no anúncio o preço do lote e o perfil de comprador, o filtro funciona. Oito em dez leads têm perfil.</p>
-        <p class="body r d3">O problema está no que acontece depois que esse lead converte: o processo de atendimento, a abordagem, a cadência, a falta de separação entre quem qualifica e quem fecha.</p>
-        <p class="body r d4"><strong>Isso não é um problema de marketing. É um problema de processo comercial.</strong> E é exatamente onde a V4 entra.</p>
+        <h2 class="h1 r d1">O lead não é<br>o problema.<br><em>O processo é.</em></h2>
+        <p class="body r d2">A Ábaco aplica filtro de perfil nos anúncios: preço do lote, faixa de renda, localização. O resultado é que a maioria dos leads que entram tem perfil de comprador real. <strong>A perda não acontece na geração — acontece no atendimento.</strong></p>
+        <p class="body r d3">O processo de atendimento não tem separação de papéis, não tem cadência definida, não tem script por empreendimento. O mesmo profissional que faz o primeiro contato tenta fechar a venda — funções que exigem habilidades distintas.</p>
+        <p class="body r d4"><strong>Isso não é um problema de marketing. É um problema de processo comercial.</strong> Marketing funciona. O que está quebrado é o que vem depois do clique.</p>
       </div>
       <div class="flist r d2">
-        <div class="vquote">
-          <div class="vquote-text">"Ele falam que é desqualificado. Eu entendo que não é desqualificado. Eu entendo que a forma que tá sendo abordada é que não tá certo."</div>
-          <div class="vquote-attr">Roberto · Call V4 × Ábaco</div>
-        </div>
         <div class="f f--hot">
           <div class="ftag">Sem SDR / Closer separado</div>
           <div class="ft">O mesmo corretor que faz o primeiro contato é quem tenta fechar a venda. <strong>Cada função exige uma habilidade diferente.</strong> Juntas, as duas se prejudicam.</div>
         </div>
         <div class="f f--hot">
           <div class="ftag">Processo não padronizado nos 5 estados</div>
-          <div class="ft">"É geral" — a qualidade de atendimento está ruim em todos os estados. Não é problema regional: é falta de <strong>padrão e rotina definidos</strong> para o time.</div>
+          <div class="ft">A qualidade de atendimento varia entre estados e parceiros. Não é problema regional: é ausência de <strong>padrão e rotina definidos</strong> para o time inteiro.</div>
         </div>
         <div class="f f--hot">
           <div class="ftag">Sem rotina de revisão de pipeline</div>
-          <div class="ft">A liderança vê só o número final (leads gerados, vendas fechadas). <strong>O que acontece no meio — revisão de pipe, script, agenda — é invisível.</strong></div>
+          <div class="ft">A liderança acompanha o número final — leads gerados e vendas fechadas. <strong>O que acontece no meio — revisão de pipe, cadência, objeções — permanece invisível.</strong></div>
         </div>
         <div class="f f--hot">
           <div class="ftag">60.000 leads sem reativação sistemática</div>
-          <div class="ft">A base de 5 anos existe, está no CRM. <strong>Mas não existe cadência de reativação.</strong> É a maior oportunidade sem custo de mídia que a Ábaco tem.</div>
+          <div class="ft">A base de 5 anos está no CRM com rastreabilidade completa. <strong>Não existe cadência de reativação estruturada.</strong> É o ativo de maior retorno imediato sem custo de mídia.</div>
+        </div>
+        <div class="f f--hot">
+          <div class="ftag">Sem SLA definido entre marketing e comercial</div>
+          <div class="ft">O lead gerado pelo marketing chega no comercial sem critério formal de passagem. <strong>Sem SLA, a responsabilidade pelo lead se perde entre as áreas.</strong></div>
         </div>
       </div>
     </div>
@@ -790,9 +883,9 @@ body {
       <div>
         <span class="ey r">A diferença que importa</span>
         <h2 class="h1 r d1">Não somos<br>a agência de SP<br><em>de novo.</em></h2>
-        <p class="body r d2">A Ábaco ficou <strong>1 ano e meio com uma agência de São Paulo</strong>, triplicou o custo e voltou para house porque house deu mais resultado. Roberto conhece bem o que uma agência operacional entrega — e não é isso que precisa agora.</p>
-        <p class="body r d3"><strong>A V4 não vende gestão de tráfego.</strong> Vendemos diagnóstico, processo e resultado. Ivan foi claro na call: "a gente vai sempre olhar para a última linha." Não para o lead gerado — para a venda fechada.</p>
-        <p class="body r d4">A diferença não é promessa. É modelo: <strong>a V4 entra na operação, entende o cenário com dados, e define onde está o gargalo real</strong> antes de qualquer execução.</p>
+        <p class="body r d2">A Ábaco já testou terceirização: <strong>1 ano e meio com uma agência de São Paulo</strong>, com triplicação de custo e resultado de vendas sem melhora proporcional. O retorno ao modelo house veio exatamente porque a agência olhava para o lead — não para o contrato.</p>
+        <p class="body r d3"><strong>A V4 não vende gestão de tráfego.</strong> O modelo é diagnóstico, processo e resultado. O critério de sucesso não é o lead gerado — é a venda fechada. Essa é a diferença estrutural entre uma agência operacional e uma consultoria estratégica.</p>
+        <p class="body r d4">A diferença não é promessa. É modelo: <strong>a V4 entra na operação, mapeia o funil com dados reais, compara com benchmark de mercado e define onde está o gargalo</strong> antes de qualquer execução.</p>
       </div>
       <div class="r d2">
         <div class="g2" style="margin-bottom:2px">
@@ -899,9 +992,10 @@ body {
         </div>
       </div>
     </div>
-    <div class="qstrip r d4">
-      <p class="qtext">"a gente queria terceirizar essa parte de venda — <em>desde a geração de lead até o fechamento</em>"</p>
-      <p class="qdesc">Roberto quer ponta a ponta. A V4 tem isso. Mas antes de executar, a gente diagnostica — para não repetir o erro da agência SP que executou sem entender o problema.</p>
+    <div class="highlight r d4" style="margin-top:2px">
+      <div class="hl-n">Ponta a ponta</div>
+      <div class="hl-div"></div>
+      <p class="hl-t">A Ábaco precisa de uma estrutura que opera desde a geração do lead até o fechamento do contrato — <strong>com processo, padrão e visibilidade em cada etapa.</strong> Antes de executar, a V4 diagnostica. Para não repetir o que já não funcionou.</p>
     </div>
   </div>
 </section>
@@ -941,7 +1035,7 @@ body {
           </div>
           <div class="f f--ok">
             <div class="ftag f-tag--ok">O CRM já tem os dados</div>
-            <div class="ft">Vocês desenvolveram o melhor CRM do setor, na visão de Roberto. Tudo está rastreado. Falta <strong>o processo de uso ativo dessa informação</strong> para reativação.</div>
+            <div class="ft">A Ábaco tem rastreabilidade completa de todos os leads desde a entrada. Tudo está registrado. Falta <strong>o processo de uso ativo dessa informação</strong> para reativação e follow-up.</div>
           </div>
         </div>
       </div>
@@ -972,8 +1066,8 @@ body {
             <div class="ft">SDR treinado, script validado, cadência de follow-up testada, integração CRM funcionando. <strong>Lançar sem processo é gerar mais leads sem conversão.</strong></div>
           </div>
           <div class="f f--hot">
-            <div class="ftag">Estoque + novos lançamentos = R$6–7bi em venda</div>
-            <div class="ft">Roberto disse isso na call. Com esse volume, <strong>não dá para operar com processo fraco.</strong> A escala exige estrutura proporcional.</div>
+            <div class="ftag">Estoque + novos lançamentos = R$6–7bi em VGV</div>
+            <div class="ft">Com o estoque atual e os empreendimentos previstos, o volume total em venda ultrapassa R$6bi. <strong>Não dá para operar com processo fraco nessa escala.</strong> A estrutura precisa crescer junto.</div>
           </div>
           <div class="f f--hot">
             <div class="ftag">Terceirizar ou estruturar — a decisão é agora</div>
@@ -1054,7 +1148,7 @@ body {
         <span class="ey r">A Metodologia</span>
         <h2 class="h1 r d1">Método V4:<br>sistema cíclico<br><em>de crescimento.</em></h2>
         <p class="body r d2">Não é um funil linear. É um sistema onde cada etapa alimenta a próxima — validado em mais de <strong>6.000 empresas ativas</strong>. Aplicado à Ábaco, o método conecta a geração de lead existente ao processo comercial que hoje está quebrado.</p>
-        <p class="body r d3">Os benchmarks que a V4 usa não são do mercado genérico. São de empresas que a gente atende — com dados reais de funil, conversão, script e cadência. <strong>Isso é o que Ivan chamou de "cruzar com dados que a gente tem dentro de casa."</strong></p>
+        <p class="body r d3">Os benchmarks que a V4 usa não são do mercado genérico. São de empresas em carteira ativa — com dados reais de funil, conversão, script e cadência por setor. <strong>Para o imobiliário de alto padrão, a Agência Carvalho já tem esse histórico acumulado.</strong></p>
       </div>
       <div class="r d2">
         <div class="g2">
@@ -1134,9 +1228,10 @@ body {
         <h2 class="h1 r d1">Não substituímos<br>o time.<br><em>Somamos o que falta.</em></h2>
         <p class="body r d2">A Ábaco tem 16 pessoas no marketing, CRM proprietário e time comercial estruturado em 5 estados. <strong>A V4 não chega para refazer o que existe — chega para adicionar o que falta.</strong></p>
         <p class="body r d3">O que falta: visão de fora, benchmarks de mercado, separação SDR/Closer, scripts validados, processo de reativação e alguém que olhe para a conversão em contrato — não só para o lead gerado.</p>
-        <div class="vquote r d4" style="margin-top:16px">
-          <div class="vquote-text">"hoje a V4 tem mais de 6.000 clientes. Eu tenho muita informação dentro de casa que eu consigo trocar com vocês num papel de consultoria."</div>
-          <div class="vquote-attr">Ivan Felipe · Call V4 × Ábaco</div>
+        <div class="highlight r d4" style="margin-top:16px">
+          <div class="hl-n">6.000+</div>
+          <div class="hl-div"></div>
+          <p class="hl-t">Empresas ativas na base V4 Company. <strong>O benchmarking que a Ábaco recebe não é pesquisa de mercado — são dados reais de funil, conversão e cadência de empresas que a V4 atende hoje.</strong></p>
         </div>
       </div>
       <div class="r d2">
@@ -1172,8 +1267,47 @@ body {
   </div>
 </section>
 
-<!-- ══ S13 · PRÓXIMOS PASSOS ════════════════════════════════════ -->
-<div class="cta-wrap snap" id="s13">
+<!-- ══ S13 · AGÊNCIA CARVALHO + CASES ═══════════════════════════ -->
+<section class="snap" id="s13">
+  <div class="w">
+    <span class="ey r">Quem está atrás desta proposta</span>
+    <h2 class="h1 r d1">Agência Carvalho.<br><em>27 anos. 100+<br>clientes ativos.</em></h2>
+    <div class="agency-badge r d2">
+      <div class="ab-mark">AC</div>
+      <div class="ab-div"></div>
+      <div class="ab-info">
+        <div class="ab-tag">Unidade V4 Company</div>
+        <div class="ab-name">Agência Carvalho</div>
+        <div class="ab-stats">
+          <div>
+            <div class="ab-stat-n">27</div>
+            <div class="ab-stat-l">Anos de mercado</div>
+          </div>
+          <div>
+            <div class="ab-stat-n">100+</div>
+            <div class="ab-stat-l">Clientes ativos</div>
+          </div>
+          <div>
+            <div class="ab-stat-n">V4</div>
+            <div class="ab-stat-l">Metodologia certificada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="body r d3" style="margin-top:14px; max-width:700px">A Agência Carvalho opera como unidade V4 Company com histórico de 27 anos no mercado regional. O benchmarking que a Ábaco recebe não é teórico — vem de uma carteira ativa de mais de 100 clientes com dados reais de funil, conversão e cadência. Alguns dos cases que referenciamos:</p>
+    <div class="logos r d4">
+      <div class="logo-cell"><span class="logo-text">Case 01</span></div>
+      <div class="logo-cell"><span class="logo-text">Case 02</span></div>
+      <div class="logo-cell"><span class="logo-text">Case 03</span></div>
+      <div class="logo-cell"><span class="logo-text">Case 04</span></div>
+      <div class="logo-cell"><span class="logo-text">Case 05</span></div>
+      <div class="logo-cell"><span class="logo-text">Case 06</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S14 · PRÓXIMOS PASSOS ════════════════════════════════════ -->
+<div class="cta-wrap snap" id="s14">
   <div class="cta-bg-txt" aria-hidden="true">V4</div>
   <div class="cta-inner">
     <div class="cta-ey r">Próximos passos</div>
@@ -1204,7 +1338,7 @@ body {
   document.querySelectorAll('.r').forEach(el => ro.observe(el));
 
   /* ── DOT NAV ────────────────────────────────────────────────── */
-  const snaps = Array.from(document.querySelectorAll('.snap, .cta-wrap'));
+  const snaps = Array.from(document.querySelectorAll('.snap'));
   const dots  = Array.from(document.querySelectorAll('.dots a'));
   const so = new IntersectionObserver(entries => {
     entries.forEach(e => {
