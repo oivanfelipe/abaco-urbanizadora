@@ -600,6 +600,102 @@ body {
   line-height: 1.4;
 }
 
+/* ─── TWO-PHASE MODEL ─────────────────────────────────────────── */
+.phases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  margin-top: 24px;
+  flex: 1;
+}
+.phase {
+  background: var(--surface);
+  padding: 26px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+.phase--active { background: var(--lift); }
+.phase--highlight {
+  background: var(--red-lo);
+  border: 1px solid var(--red-mid);
+}
+.ph-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ph-label--red { color: var(--red); }
+.ph-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2vw, 28px);
+  text-transform: uppercase;
+  color: var(--text);
+  letter-spacing: .01em;
+  line-height: 1.1;
+}
+.ph-desc { font-size: 13px; line-height: 1.65; color: var(--muted); font-weight: 300; }
+.ph-items { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
+.ph-item {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.ph-item::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+.ph-ref {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.ph-ref-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.ph-ref-names {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--red);
+}
+.phase-arrow {
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+}
+@media (max-width: 680px) {
+  .phases { grid-template-columns: 1fr; }
+  .phase-arrow { display: none; }
+}
+
 /* ─── LOGO PARADE ─────────────────────────────────────────────── */
 .logos {
   display: flex;
@@ -630,6 +726,8 @@ body {
   transition: opacity .2s, color .2s;
 }
 .logo-cell:hover .logo-text { opacity: 1; color: var(--text); }
+.logo-cell--named .logo-text { opacity: .85; color: var(--text); filter: none; }
+.logo-cell--named:hover .logo-text { opacity: 1; color: var(--red); }
 .agency-badge {
   background: var(--red-lo);
   border: 1px solid var(--red-mid);
@@ -1219,46 +1317,47 @@ body {
   </div>
 </section>
 
-<!-- ══ S12 · COMO A V4 SOMA ═════════════════════════════════════ -->
+<!-- ══ S12 · DUAS FASES ══════════════════════════════════════════ -->
 <section class="snap" id="s12" style="background:var(--surface)">
-  <div class="w">
-    <div class="split">
-      <div>
-        <span class="ey r">Como trabalhamos juntos</span>
-        <h2 class="h1 r d1">O time no centro.<br><em>A V4 como<br>multiplicador.</em></h2>
-        <p class="body r d2">A Ábaco tem o que nenhuma consultoria pode trazer: conhecimento profundo dos empreendimentos, relacionamento com o mercado regional e um time que já opera em 5 estados. <strong>A V4 não chega para substituir — chega para somar o que acelera.</strong></p>
-        <p class="body r d3">O que a V4 traz é externo: benchmarks de 6.000+ empresas, estratégias validadas no mercado imobiliário e processo testado. A combinação dos dois é o que gera resultado diferente.</p>
-        <div class="highlight r d4" style="margin-top:16px">
-          <div class="hl-n">6.000+</div>
-          <div class="hl-div"></div>
-          <p class="hl-t">Empresas ativas na base V4. <strong>O benchmarking que o time recebe não é pesquisa de mercado genérica — são dados reais de funil, conversão e cadência de empresas que a V4 acompanha hoje.</strong></p>
+  <div class="w" style="display:flex;flex-direction:column;height:100%;padding-top:70px;padding-bottom:32px">
+    <span class="ey r">Nossa proposta de trabalho</span>
+    <h2 class="h1 r d1" style="font-size:clamp(24px,2.8vw,40px)">Do projeto<br><em>ao braço<br>estratégico.</em></h2>
+    <div class="phases r d2">
+
+      <!-- Fase 1 -->
+      <div class="phase phase--active">
+        <div class="ph-label">Fase 01 · Ponto de partida</div>
+        <div class="ph-title">Estruturação<br>Estratégica</div>
+        <div class="ph-desc">Um projeto com escopo fechado, prazo definido e entregáveis concretos. O time sai com processo estruturado, funil mapeado e playbook pronto para escalar setembro.</div>
+        <div class="ph-items">
+          <div class="ph-item">Diagnóstico do funil de vendas + CRM</div>
+          <div class="ph-item">Mapeamento da jornada lead → contrato</div>
+          <div class="ph-item">Estrutura SDR / Closer por empreendimento</div>
+          <div class="ph-item">Scripts e cadência validados por perfil</div>
+          <div class="ph-item">Playbook de reativação dos 60k leads</div>
+          <div class="ph-item">Régua de KPIs com foco no contrato assinado</div>
+        </div>
+        <div class="phase-arrow">›</div>
+      </div>
+
+      <!-- Fase 2 -->
+      <div class="phase phase--highlight">
+        <div class="ph-label ph-label--red">Fase 02 · Braço estratégico</div>
+        <div class="ph-title">Consultoria<br>Estratégica<br>Contínua</div>
+        <div class="ph-desc">A V4 permanece como direção estratégica — sem executar. Benchmarks de mercado, inteligência de dados e orientação contínua. O time opera; a V4 aponta o que o mercado valida.</div>
+        <div class="ph-items">
+          <div class="ph-item">Benchmarks mensais de 6.000+ empresas ativas</div>
+          <div class="ph-item">Reuniões de direcionamento com marketing e comercial</div>
+          <div class="ph-item">Acompanhamento de KPIs e ajuste de rota</div>
+          <div class="ph-item">Inteligência de mercado e movimentos do setor</div>
+          <div class="ph-item">Estratégias validadas em outros segmentos e verticais</div>
+        </div>
+        <div class="ph-ref">
+          <div class="ph-ref-label">Modelo aplicado em</div>
+          <div class="ph-ref-names">XP Investimentos · Exame</div>
         </div>
       </div>
-      <div class="r d2">
-        <div style="overflow-x:auto">
-          <table class="dtable">
-            <thead>
-              <tr>
-                <th>O que a V4 traz</th>
-                <th>Como potencializa o time</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Benchmarks de 6.000+ empresas</td><td class="yes">Time opera com referência real do setor</td></tr>
-              <tr><td>Diagnóstico de funil com dados do CRM</td><td class="yes">Clareza de onde focar para crescer mais</td></tr>
-              <tr><td>Estrutura SDR / Closer validada</td><td class="yes">Mais conversão com o mesmo volume de leads</td></tr>
-              <tr><td>Scripts por empreendimento e perfil</td><td class="yes">Abordagem consistente em todos os estados</td></tr>
-              <tr><td>Cadência de reativação dos 60k leads</td><td class="yes">Nova receita sem custo adicional de mídia</td></tr>
-              <tr><td>Visão do contrato assinado como KPI</td><td class="yes">Marketing e comercial com objetivo único</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="highlight r d3" style="margin-top:2px">
-          <div class="hl-n">Garantia</div>
-          <div class="hl-div"></div>
-          <p class="hl-t">Se a Ábaco não receber todos os entregáveis acordados, <strong>a V4 devolve o investimento.</strong> Sem burocracia.</p>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -1292,12 +1391,12 @@ body {
     </div>
     <p class="body r d3" style="margin-top:14px; max-width:700px">A Agência Carvalho opera como unidade V4 Company com histórico de 27 anos no mercado regional. O benchmarking que a Ábaco recebe não é teórico — vem de uma carteira ativa de mais de 100 clientes com dados reais de funil, conversão e cadência. Alguns dos cases que referenciamos:</p>
     <div class="logos r d4">
-      <div class="logo-cell"><span class="logo-text">Case 01</span></div>
-      <div class="logo-cell"><span class="logo-text">Case 02</span></div>
-      <div class="logo-cell"><span class="logo-text">Case 03</span></div>
-      <div class="logo-cell"><span class="logo-text">Case 04</span></div>
-      <div class="logo-cell"><span class="logo-text">Case 05</span></div>
-      <div class="logo-cell"><span class="logo-text">Case 06</span></div>
+      <div class="logo-cell logo-cell--named"><span class="logo-text">XP Investimentos</span></div>
+      <div class="logo-cell logo-cell--named"><span class="logo-text">Exame</span></div>
+      <div class="logo-cell"><span class="logo-text">Cliente 03</span></div>
+      <div class="logo-cell"><span class="logo-text">Cliente 04</span></div>
+      <div class="logo-cell"><span class="logo-text">Cliente 05</span></div>
+      <div class="logo-cell"><span class="logo-text">Cliente 06</span></div>
     </div>
   </div>
 </section>
