@@ -540,51 +540,6 @@ body {
 }
 .del-text strong { color: var(--text); font-weight: 500; }
 
-/* ─── PROJECTION ──────────────────────────────────────────────── */
-.proj-math {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  gap: 0;
-  align-items: center;
-  margin-top: 24px;
-  background: var(--border);
-}
-.proj-cell {
-  background: var(--surface);
-  padding: 20px 22px;
-  text-align: center;
-}
-.proj-cell--lift { background: var(--lift); }
-.proj-cell--red { background: var(--red-lo); border: 1px solid var(--red-mid); }
-.proj-op {
-  background: var(--black);
-  width: 40px;
-  text-align: center;
-  font-family: 'Oswald', sans-serif;
-  font-size: 22px;
-  color: var(--muted);
-  font-weight: 300;
-}
-.proj-n {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: clamp(28px, 3vw, 44px);
-  line-height: 1;
-  letter-spacing: -.02em;
-  color: var(--text);
-}
-.proj-n--red { color: var(--red); }
-.proj-l {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 5px;
-}
-.proj-note { font-size: 11px; color: var(--muted); font-weight: 300; margin-top: 6px; line-height: 1.4; }
-
 /* ─── INVESTMENT BLOCK ────────────────────────────────────────── */
 .inv-wrap {
   display: grid;
@@ -771,39 +726,6 @@ body {
   .r { opacity: 1; transform: none; transition: none; }
 }
 
-/* ─── BENCH STRIP ─────────────────────────────────────────────── */
-.bench-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-  background: var(--border);
-  margin-top: 2px;
-}
-.bench-cell {
-  background: var(--lift);
-  padding: 14px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.bench-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.bench-val {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--red);
-  line-height: 1;
-  letter-spacing: -.01em;
-}
-.bench-note { font-size: 11px; color: var(--muted); font-weight: 300; line-height: 1.4; }
-
 /* ─── INTEL GRID ──────────────────────────────────────────────── */
 .intel-wrap {
   display: grid;
@@ -875,6 +797,25 @@ body {
   letter-spacing: -.01em;
 }
 .intel-row-l { font-size: 11px; color: var(--muted); font-weight: 300; line-height: 1.4; }
+
+/* ─── CLIENT TAGS ─────────────────────────────────────────────── */
+.client-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.client-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--lift);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+}
 </style>
 
 <!-- FIXED NAV -->
@@ -885,19 +826,21 @@ body {
 
 <!-- DOT NAV -->
 <nav class="dots" aria-label="Slides">
-  <a href="#scapa" class="on" aria-label="Capa"></a>
-  <a href="#srecap" aria-label="Recap"></a>
+  <a href="#scapa"   class="on" aria-label="Capa"></a>
+  <a href="#svquem"  aria-label="V4 Carvalho"></a>
+  <a href="#srecap"  aria-label="Recap"></a>
   <a href="#s3eixos" aria-label="Três Eixos"></a>
-  <a href="#smkt" aria-label="Marketing"></a>
-  <a href="#smktdel" aria-label="Entregáveis Marketing"></a>
-  <a href="#scom" aria-label="Comercial"></a>
-  <a href="#sbase" aria-label="Base de Leads"></a>
-  <a href="#sintel" aria-label="Inteligência"></a>
-  <a href="#scad" aria-label="Cadência"></a>
-  <a href="#sdel" aria-label="Entregáveis Mensais"></a>
-  <a href="#sproj" aria-label="Projeção"></a>
-  <a href="#sinv" aria-label="Investimento"></a>
-  <a href="#scta" aria-label="Próximos Passos"></a>
+  <a href="#smkt"    aria-label="Marketing"></a>
+  <a href="#smktdel" aria-label="Novos Canais"></a>
+  <a href="#scrm"    aria-label="CRM e Retenção"></a>
+  <a href="#scom"    aria-label="Comercial"></a>
+  <a href="#sintel"  aria-label="Inteligência"></a>
+  <a href="#scad"    aria-label="Cadência"></a>
+  <a href="#saudit"  aria-label="Auditoria"></a>
+  <a href="#sdel"    aria-label="Entregáveis"></a>
+  <a href="#scase"   aria-label="Case XP"></a>
+  <a href="#sinv"    aria-label="Investimento"></a>
+  <a href="#scta"    aria-label="Próximos Passos"></a>
 </nav>
 
 <!-- ══ SCAPA · CAPA ══════════════════════════════════════════════ -->
@@ -915,6 +858,55 @@ body {
   </div>
 </section>
 
+<!-- ══ SVQUEM · O QUE É A V4 CARVALHO ══════════════════════════ -->
+<section class="snap" id="svquem">
+  <div class="w">
+    <span class="ey r">Quem somos · V4 Carvalho &amp; Co</span>
+    <div class="split r d1" style="margin-top:8px">
+      <div>
+        <h2 class="h1">A maior rede de consultoria de marketing do Brasil.<br><em>Com a unidade certa para a Ábaco.</em></h2>
+        <p class="body" style="margin-top:16px">A V4 Company não é agência. É <strong>consultoria de resultado</strong> — estruturamos o processo que gera receita. São 12 anos de operação, presença nacional e uma rede de mais de 600 consultores especializados.</p>
+        <p class="body">A <strong>V4 Carvalho</strong> é a unidade responsável pela Ábaco — com acesso completo à metodologia, base de dados e benchmarks da rede V4 em todo o Brasil.</p>
+        <div class="highlight" style="margin-top:20px">
+          <div class="hl-n">6k+</div>
+          <div class="hl-div"></div>
+          <p class="hl-t">Empresas ativas na rede V4. <strong>Dados reais de funil, canal, CRM, conversão e crescimento — disponíveis para calibrar cada decisão da Ábaco.</strong></p>
+        </div>
+        <div class="client-tags" style="margin-top:14px">
+          <span class="client-tag">XP Investimentos</span>
+          <span class="client-tag">Spotify</span>
+          <span class="client-tag">iFood</span>
+          <span class="client-tag">Smart Fit</span>
+          <span class="client-tag">Melissa</span>
+          <span class="client-tag">Lugano</span>
+          <span class="client-tag">Ortobom</span>
+          <span class="client-tag">Carmen Steffens</span>
+        </div>
+      </div>
+      <div>
+        <div class="flist">
+          <div class="f f--hot">
+            <div class="ftag">O método V4 · Quatro pilares</div>
+            <div class="ft"><strong>Adquirir · Engajar · Reter · Ampliar.</strong> Cada frente da consultoria mapeia um desses pilares com processo, métrica e entregável definido — aplicado ao ciclo de vendas de empreendimentos.</div>
+          </div>
+          <div class="f">
+            <div class="ftag">Não somos agência</div>
+            <div class="ft">Agência entrega serviço. A V4 entrega estrutura. Nosso trabalho é construir o processo que torna a operação da Ábaco mais eficiente — e isso continua funcionando mesmo depois que a gente sai da sala.</div>
+          </div>
+          <div class="f">
+            <div class="ftag">Imobiliário e loteamentos</div>
+            <div class="ft">A V4 opera com construtoras, loteadoras e incorporadoras em todo o Brasil. O benchmark da Ábaco não precisa ser construído do zero — <strong>ele já existe na nossa base e é atualizado todo mês.</strong></div>
+          </div>
+          <div class="f">
+            <div class="ftag">Case em destaque · XP Investimentos</div>
+            <div class="ft">ROI de 2,73 e ROAS de 11,51 com crescimento expressivo de receita após conectar mídia ao CRM e implementar análise de cohort. Apresentaremos o case completo mais adiante.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ SRECAP · O QUE JÁ IDENTIFICAMOS ══════════════════════════ -->
 <section class="snap" id="srecap" style="background:var(--surface)">
   <div class="w">
@@ -924,13 +916,13 @@ body {
       <div class="card card--lift">
         <div class="cl">Marketing</div>
         <div class="cn">R$120k<span style="font-size:18px;font-weight:400;color:var(--muted)">/mês</span></div>
-        <div class="ct" style="margin-top:10px">Investimento digital robusto. Canais operando — mas sem benchmark externo para saber se o CPL está dentro do melhor nível possível por empreendimento e canal.</div>
+        <div class="ct" style="margin-top:10px">Investimento digital robusto. Canais operando — mas sem benchmark externo para saber se o CPL está no melhor nível possível por empreendimento e canal. E novos canais ainda inexplorados.</div>
       </div>
       <div class="card">
         <div class="cl">Comercial</div>
         <div class="cn cn--red">60k</div>
         <div class="cl">leads acumulados em 5 anos</div>
-        <div class="ct">Uma base construída com mais de R$1,4M em investimento. Ciclo de compra de 30–90 dias exige nutrição estruturada. Velocidade de resposta é o maior gargalo do setor.</div>
+        <div class="ct">Uma base construída ao longo de anos com alto investimento. Ciclo de compra longo exige nutrição estruturada. Base subutilizada como ativo de CRM e reativação.</div>
       </div>
       <div class="card card--lift">
         <div class="cl">Mercado</div>
@@ -941,7 +933,7 @@ body {
     </div>
     <div class="qstrip r d3">
       <p class="qtext">Produto sólido. Time estruturado. <em>O que falta é o olhar de fora.</em></p>
-      <p class="qdesc">A V4 entra como braço estratégico externo — não para substituir o time interno de 16 pessoas, mas para orientar com dado de mercado, benchmark e processo validado em escala.</p>
+      <p class="qdesc">A V4 entra como braço estratégico externo — não para substituir o time interno, mas para orientar com dado de mercado, benchmark e processo validado em escala. E para abrir canais e capacidades que o time interno sozinho não tem.</p>
     </div>
   </div>
 </section>
@@ -956,24 +948,24 @@ body {
         <div class="p-num">01</div>
         <div class="p-name">Marketing</div>
         <div class="p-sub">Canais · Benchmark · Mix</div>
-        <div class="p-desc">Diagnóstico contínuo do investimento em mídia paga. Benchmark de CPL por canal e empreendimento cruzado com a base V4. Recomendação de mix e oportunidades de canal.</div>
+        <div class="p-desc">Diagnóstico contínuo do investimento em mídia paga. Benchmark de CPL por canal e empreendimento cruzado com a base V4. Abertura de novos canais: programática, OOH, YouTube, mídia paralela.</div>
         <div class="p-items">
           <div class="p-item">Análise mensal de campanhas</div>
-          <div class="p-item">Benchmark CPL vs. mercado</div>
-          <div class="p-item">Estratégia de reativação de base</div>
+          <div class="p-item">Benchmark vs. setor imobiliário</div>
+          <div class="p-item">Novos canais e mídia paralela</div>
           <div class="p-item">Diagnóstico de criativos e LPs</div>
         </div>
       </div>
       <div class="pillar pillar--active">
         <div class="p-num">02</div>
-        <div class="p-name">Comercial</div>
-        <div class="p-sub">Funil · Processo · Conversão</div>
-        <div class="p-desc">Mapeamento do funil lead → contrato por empreendimento. Diagnóstico de velocidade de atendimento, qualidade de nutrição e gargalos de conversão.</div>
+        <div class="p-name">Comercial + CRM</div>
+        <div class="p-sub">Funil · Retenção · RFM</div>
+        <div class="p-desc">Mapeamento do funil lead → contrato por empreendimento. CRM como ativo de retenção, reativação e geração de novos clientes via base existente. Segmentação RFM.</div>
         <div class="p-items">
-          <div class="p-item">Diagnóstico mensal do funil</div>
-          <div class="p-item">Análise de velocidade de resposta</div>
-          <div class="p-item">Script de abordagem por etapa</div>
-          <div class="p-item">Estratégia de reativação de leads</div>
+          <div class="p-item">Diagnóstico do funil comercial</div>
+          <div class="p-item">CRM e segmentação RFM</div>
+          <div class="p-item">Retenção e base como canal</div>
+          <div class="p-item">Automação por comportamento</div>
         </div>
       </div>
       <div class="pillar pillar--active">
@@ -984,14 +976,14 @@ body {
         <div class="p-items">
           <div class="p-item">Benchmark exclusivo do setor</div>
           <div class="p-item">Análise de posição competitiva</div>
-          <div class="p-item">Dados de CAC, CPL e conversão</div>
+          <div class="p-item">Auditoria de dados e martech</div>
           <div class="p-item">Relatório de tendências de canal</div>
         </div>
       </div>
     </div>
     <div class="qstrip r d3">
       <p class="qtext">Cada frente alimenta as outras. <em>Os dados do comercial calibram o marketing. O benchmark calibra as duas.</em></p>
-      <p class="qdesc">Não é uma consultoria de um serviço. É um sistema de decisão contínuo — onde dado de mercado, dados internos e processo se retroalimentam para gerar resultado crescente.</p>
+      <p class="qdesc">Não é consultoria de um serviço isolado. É um sistema de decisão contínuo — onde dado de mercado, dados internos e processo se retroalimentam para gerar resultado crescente.</p>
     </div>
   </div>
 </section>
@@ -1003,8 +995,8 @@ body {
       <div>
         <span class="ey r">01 · Consultoria de Marketing</span>
         <h2 class="h1 r d1">O canal certo,<br>para o lançamento certo,<br><em>na hora certa.</em></h2>
-        <p class="body r d2">A Ábaco já investe R$120k/mês. A questão não é quanto investir — é <strong>como distribuir entre canais e empreendimentos</strong> para extrair o máximo de cada real. Esse é o trabalho da frente de marketing.</p>
-        <p class="body r d3">Não chegamos com opinião. Chegamos com benchmark real: o que outras operações do mesmo porte pagam por lead qualificado em Meta, Google e canais complementares.</p>
+        <p class="body r d2">A Ábaco já investe R$120k/mês. A questão não é quanto investir — é <strong>como distribuir entre canais e empreendimentos</strong> para extrair o máximo de cada real. E quais novos canais podem ser abertos.</p>
+        <p class="body r d3">Não chegamos com opinião. Chegamos com benchmark real: o que outras operações do mesmo porte fazem em Meta, Google e canais complementares — e o que está sendo adotado pelos que mais crescem.</p>
         <div class="highlight r d4" style="margin-top:18px">
           <div class="hl-n">CPL</div>
           <div class="hl-div"></div>
@@ -1018,16 +1010,16 @@ body {
             <div class="ft">Cruzamos os dados da campanha da Ábaco com referências do setor imobiliário Sul-Sudeste da base V4. <strong>O CPL de vocês versus o benchmark do mercado — por canal, por tipo de empreendimento.</strong></div>
           </div>
           <div class="f f--hot">
-            <div class="ftag">Mix e oportunidades</div>
-            <div class="ft">Meta e Google são a base. Mas os líderes de setor já operam com mídia programática, YouTube de performance e canais de nicho. <strong>Identificamos onde o próximo canal mais rentável está — antes da concorrência.</strong></div>
+            <div class="ftag">Mix e novos canais</div>
+            <div class="ft">Meta e Google são a base. Mas as operações que mais crescem já operam com mídia programática, OOH digital, YouTube de performance e canais proprietários V4. <strong>Identificamos onde está o próximo canal rentável — antes da concorrência chegar lá.</strong></div>
           </div>
           <div class="f f--hot">
             <div class="ftag">Criativos e landing pages</div>
-            <div class="ft">O criativo que converte bem em um empreendimento pode desperdiçar verba em outro. <strong>Diagnóstico de criativos e LPs com comparativo de benchmark de CTR e taxa de conversão.</strong></div>
+            <div class="ft">Em venda consultiva, criativo bom não gera mais lead — gera o lead certo. <strong>Diagnóstico de criativos e LPs com comparativo de benchmark do setor. MQL real, não volume de clique.</strong></div>
           </div>
           <div class="f f--hot">
-            <div class="ftag">Base ativa</div>
-            <div class="ft">60k leads construídos a custo alto. Reativar custa 3–5× menos que captar novo. <strong>Estratégia de reativação com segmentação por interesse, empreendimento e estágio do funil.</strong></div>
+            <div class="ftag">Base ativa como canal</div>
+            <div class="ft">60k leads construídos com alto investimento. Reativar a base custa muito menos que captar novo lead com qualidade equivalente. <strong>Estratégia de reativação segmentada por interesse e estágio de funil.</strong></div>
           </div>
         </div>
       </div>
@@ -1035,52 +1027,94 @@ body {
   </div>
 </section>
 
-<!-- ══ SMKTDEL · O QUE O TIME DE MARKETING GANHA ════════════════ -->
+<!-- ══ SMKTDEL · NOVOS CANAIS QUE A V4 ABRE ════════════════════ -->
 <section class="snap" id="smktdel" style="background:var(--surface)">
   <div class="w">
-    <span class="ey r">01 · Marketing · O que o time recebe</span>
-    <h2 class="h1 r d1">Não é mais uma opinião.<br><em>É dado de mercado.</em></h2>
-    <div class="bench-row r d2">
-      <div class="bench-cell">
-        <div class="bench-label">Benchmark · Meta Ads</div>
-        <div class="bench-val">R$18–35</div>
-        <div class="bench-note">CPL de referência para loteamentos residenciais Sul-Sudeste (base V4, 2025)</div>
+    <span class="ey r">01 · Marketing · Além de Meta e Google</span>
+    <h2 class="h1 r d1">Novas frentes.<br><em>Novas fontes de lead qualificado.</em></h2>
+    <div class="g4 r d2" style="margin-top:24px">
+      <div class="card card--lift">
+        <div class="ftag">Mídia Programática</div>
+        <div class="ft" style="margin-top:6px">Segmentação por comportamento, renda estimada e localização geográfica. Alcança o comprador potencial antes da intenção declarada — na fase de consciência, fora das plataformas tradicionais.</div>
       </div>
-      <div class="bench-cell">
-        <div class="bench-label">Benchmark · Google Ads</div>
-        <div class="bench-val">R$28–55</div>
-        <div class="bench-note">CPL de intenção (Search + Performance Max) para loteamentos de alto padrão</div>
+      <div class="card">
+        <div class="ftag">OOH / DOOH</div>
+        <div class="ft" style="margin-top:6px">Out-of-Home digital e físico em áreas estratégicas — regiões próximas a empreendimentos, corredores de renda, grandes centros regionais. Reforça marca, gera busca orgânica e reduz custo de aquisição no digital.</div>
       </div>
-      <div class="bench-cell">
-        <div class="bench-label">Taxa de conversão</div>
-        <div class="bench-val">2–4%</div>
-        <div class="bench-note">Lead → contrato nas melhores operações do setor com processo estruturado</div>
+      <div class="card card--lift">
+        <div class="ftag">YouTube Performance</div>
+        <div class="ft" style="margin-top:6px">Vídeo com intenção: campanhas de performance no YouTube que capturam quem pesquisa loteamento no Sul. Alto poder de persuasão em produto de ticket elevado e ciclo de decisão longo.</div>
       </div>
-      <div class="bench-cell">
-        <div class="bench-label">Reativação vs. captação</div>
-        <div class="bench-val">3–5×</div>
-        <div class="bench-note">Menor custo de reativação versus geração de lead novo para base qualificada</div>
+      <div class="card">
+        <div class="ftag">Mídia Paralela V4</div>
+        <div class="ft" style="margin-top:6px">Canais proprietários, audiências e operações da rede V4. Distribuição de oferta por canais que só a rede acessa — sem concorrer com outros anunciantes no mesmo leilão de mídia.</div>
       </div>
     </div>
     <div class="g3 r d3" style="margin-top:2px">
       <div class="card">
-        <div class="ftag">Relatório mensal de mídia</div>
-        <div class="ft" style="margin-top:4px">Análise de campanhas com comparativo ao benchmark do setor. CPL real vs. referência, por canal e empreendimento. Recomendação de redistribuição de verba.</div>
+        <div class="ftag">Influência regional</div>
+        <div class="ft" style="margin-top:4px">Criadores de conteúdo locais com audiência qualificada para o perfil de comprador de loteamento no Sul. Prova social com alcance orgânico, custo menor e contexto regional — o que o Meta não replica.</div>
       </div>
       <div class="card card--lift">
-        <div class="ftag">Análise de criativos</div>
-        <div class="ft" style="margin-top:4px">Diagnóstico de CTR e taxa de conversão dos criativos ativos. Identificação de padrões que funcionam por segmento de público e produto.</div>
+        <div class="ftag">E-mail e CRM como canal de mídia</div>
+        <div class="ft" style="margin-top:4px">A base de 60k leads é um canal proprietário de distribuição. Com segmentação certa, e-mail e WhatsApp ativados via CRM geram resultado proporcional a campanhas pagas — sem custo de mídia adicional.</div>
       </div>
       <div class="card">
-        <div class="ftag">Estratégia de reativação</div>
-        <div class="ft" style="margin-top:4px">Segmentação da base de 60k leads por interesse, empreendimento e calor. Fluxo de reativação por etapa — sem precisar aumentar investimento em mídia nova.</div>
+        <div class="ftag">Indicação estruturada</div>
+        <div class="ft" style="margin-top:4px">Quem já comprou da Ábaco é o vendedor mais confiável. Com processo de indicação ativo — incentivos, automação e rastreamento — a base de clientes se torna canal de aquisição de altíssima qualidade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCRM · CRM · RFM · RETENÇÃO ══════════════════════════════ -->
+<section class="snap" id="scrm">
+  <div class="w">
+    <span class="ey r">02 · CRM &amp; Retenção · A base como motor de receita</span>
+    <h2 class="h1 r d1">A base não é banco de dados.<br><em>É um motor de receita<br>esperando ser ligado.</em></h2>
+    <div class="split r d2" style="margin-top:20px">
+      <div>
+        <div class="flist">
+          <div class="f f--hot">
+            <div class="ftag">RFM · Quem merece atenção agora</div>
+            <div class="ft">Segmentação por <strong>Recência</strong> (último contato), <strong>Frequência</strong> (interações) e <strong>Monetário</strong> (produto de interesse e ticket). Quem está quente recebe ação imediata. Quem esfriou entra em fluxo de reaquecimento. <em>Sem gastar energia igual para todo mundo.</em></div>
+          </div>
+          <div class="f f--hot">
+            <div class="ftag">Retenção · O comprador que já existe</div>
+            <div class="ft">Quem comprou um loteamento da Ábaco é o candidato ideal para o próximo empreendimento. <strong>Relacionamento pós-venda que converte clientes em compradores recorrentes — e em indicadores ativos da marca.</strong></div>
+          </div>
+          <div class="f f--hot">
+            <div class="ftag">CRM → Mídia · Loopback fechado</div>
+            <div class="ft">Comportamento de lead no CRM alimenta segmentação de campanhas em tempo real. <strong>Quem mais converte no funil define quem recebe anúncio amanhã.</strong> Audiências similares de compradores reais — não de clicadores.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flist">
+          <div class="f">
+            <div class="ftag">Automação por comportamento</div>
+            <div class="ft">Gatilhos automáticos por ação: abriu e-mail → recebe sequência WhatsApp. Visitou empreendimento → follow-up no dia. Lead inativo há mais de 60 dias → entra em fluxo de reaquecimento. <em>Sem envio em massa. Sem spam. Ação certa, hora certa.</em></div>
+          </div>
+          <div class="f">
+            <div class="ftag">Nutrição por ciclo de decisão</div>
+            <div class="ft">Loteamento não é compra impulsiva. O lead que chegou hoje pode fechar em 3 meses. <strong>Com CRM estruturado, a Ábaco nunca perde um lead por ausência de contato no momento certo do ciclo.</strong></div>
+          </div>
+          <div class="f f--hot">
+            <div class="ftag">Base → Novos clientes via lookalike</div>
+            <div class="ft">Perfil dos melhores compradores da Ábaco vira audiência para captação. <strong>Quanto mais rica a base de dados de quem já comprou, mais eficiente fica a mídia paga</strong> — o Meta e o Google encontram quem se parece com quem já fechou.</div>
+          </div>
+          <div class="f">
+            <div class="ftag">Dashboard de saúde da base</div>
+            <div class="ft">Quantos leads estão ativos, quantos esfriaram, qual segmento converte mais, qual canal gera lead que fecha. <strong>CRM como ferramenta de decisão de marketing e comercial — não só de registro.</strong></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══ SCOM · FRENTE 02 · COMERCIAL ══════════════════════════════ -->
-<section class="snap" id="scom">
+<section class="snap" id="scom" style="background:var(--surface)">
   <div class="w">
     <span class="ey r">02 · Consultoria Comercial</span>
     <h2 class="h1 r d1">Do lead ao contrato:<br><em>cada etapa<br>destrinchada.</em></h2>
@@ -1101,8 +1135,8 @@ body {
         <div class="fs-tag">Gargalo crítico</div>
         <div class="fs-name">Atendimento</div>
         <div class="fs-items">
-          <div class="fs-item">Velocidade: &lt;5 min = +80%</div>
-          <div class="fs-item">Primeiro contato define ciclo</div>
+          <div class="fs-item">Velocidade · Janela de oportunidade</div>
+          <div class="fs-item">Primeiro contato define o ciclo</div>
           <div class="fs-item">Script e abordagem</div>
         </div>
       </div>
@@ -1139,58 +1173,19 @@ body {
     </div>
     <div class="g3 r d4" style="margin-top:2px">
       <div class="card">
-        <div class="cn cn--red">5 min</div>
-        <div class="cl">Janela de ouro no primeiro contato</div>
-        <div class="ct">Operações de alta performance respondem leads em até 5 minutos e têm 80% mais conversão. Velocidade de atendimento é o investimento de maior retorno do setor.</div>
+        <div class="cn cn--red">Velocidade</div>
+        <div class="cl">de atendimento · Janela crítica</div>
+        <div class="ct">O primeiro contato define o ciclo. Operações de alta performance respondem leads nos primeiros minutos e têm conversão significativamente maior. Velocidade de atendimento é o investimento de maior retorno do setor.</div>
       </div>
       <div class="card card--lift">
-        <div class="cn cn--red">2–4%</div>
-        <div class="cl">Conversão lead → contrato com processo</div>
-        <div class="ct">Com funil estruturado, as melhores operações chegam a 2–4% de conversão. A diferença em cima de 60k leads é dezenas de contratos por ciclo sem aumentar investimento.</div>
+        <div class="cn cn--red">Processo</div>
+        <div class="cl">estruturado · Conversão real</div>
+        <div class="ct">Com funil estruturado e nutrição ativa, a diferença de conversão sobre 60k leads representa dezenas de contratos por ciclo — sem aumentar investimento em mídia nova.</div>
       </div>
       <div class="card">
-        <div class="cn cn--red">30–90d</div>
-        <div class="cl">Ciclo de decisão de compra</div>
-        <div class="ct">Lead sem nutrição durante o ciclo esfria. Quem estrutura cadência de contato durante todo o ciclo converte mais sem gerar mais leads — só perdendo menos.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SBASE · A BASE DE 60K LEADS ══════════════════════════════ -->
-<section class="snap" id="sbase" style="background:var(--surface)">
-  <div class="w">
-    <div class="split">
-      <div>
-        <span class="ey r">02 · Comercial · Ativo subutilizado</span>
-        <h2 class="h1 r d1">60.000 leads.<br>5 anos de interesse.<br><em>Reativação imediata.</em></h2>
-        <p class="body r d2">A base foi construída com <strong>mais de R$1,4M de investimento</strong> ao longo de 5 anos. Cada lead representa uma intenção de compra registrada — um ativo de baixíssimo custo de reativação com alto potencial de conversão.</p>
-        <p class="body r d3">A maioria das empresas trata a base como um banco de dados passivo. As que crescem tratam como um <strong>ativo ativo de receita</strong> — segmentando, nutrindo e reativando de forma sistemática.</p>
-        <div class="highlight r d4" style="margin-top:18px">
-          <div class="hl-n">R$1,44M</div>
-          <div class="hl-div"></div>
-          <p class="hl-t">Investidos para construir essa base. <strong>Com segmentação e estratégia de reativação, esse ativo gera receita imediata — sem precisar de um real a mais em mídia nova.</strong></p>
-        </div>
-      </div>
-      <div class="r d2">
-        <div class="flist">
-          <div class="f f--hot">
-            <div class="ftag">Segmentação por interesse</div>
-            <div class="ft">Separar a base por empreendimento de interesse, canal de origem, estágio no funil e temperatura do lead. <strong>Não mandar a mesma mensagem para todos — segmentar para falar o que cada um quer ouvir.</strong></div>
-          </div>
-          <div class="f f--hot">
-            <div class="ftag">Cadência de reativação</div>
-            <div class="ft">Fluxo de contato por e-mail, WhatsApp e remarketing — calibrado pela posição do lead no funil. <strong>Custo 3–5× menor que gerar um lead novo com desempenho comparável quando qualificado.</strong></div>
-          </div>
-          <div class="f f--hot">
-            <div class="ftag">Alimentação do CRM proprietário</div>
-            <div class="ft">O CRM da Ábaco já tem rastreabilidade completa. Com os dados que ele gera, é possível mapear quais segmentos da base convertem mais — e priorizar esforço comercial.</div>
-          </div>
-          <div class="f f--hot">
-            <div class="ftag">CRM como driver de mídia</div>
-            <div class="ft">Dados de comportamento de lead alimentando segmentação de campanhas em tempo real. <strong>O que converte no CRM define quem vai receber anúncio amanhã — loopback fechado.</strong></div>
-          </div>
-        </div>
+        <div class="cn cn--red">Ciclo longo</div>
+        <div class="cl">de decisão · Nutrição essencial</div>
+        <div class="ct">Lead sem nutrição durante o ciclo de compra esfria e some. Quem estrutura cadência de contato durante todo o ciclo converte mais — sem gerar mais leads, só perdendo menos.</div>
       </div>
     </div>
   </div>
@@ -1220,7 +1215,7 @@ body {
           </div>
           <div class="intel-row">
             <div class="intel-row-n">MIX</div>
-            <div class="intel-row-l">Distribuição de investimento por canal: Meta, Google, programática, outbound</div>
+            <div class="intel-row-l">Distribuição de investimento por canal: Meta, Google, programática, OOH</div>
           </div>
           <div class="intel-row">
             <div class="intel-row-n">CVR</div>
@@ -1233,15 +1228,19 @@ body {
         <div class="flist">
           <div class="f f--hot">
             <div class="ftag">Posição competitiva</div>
-            <div class="ft">Onde a Ábaco está em relação ao benchmark do setor — em CPL, conversão e mix de canais. <strong>Não comparado com quem eles gostariam de ser, mas com quem opera de fato no mesmo mercado.</strong></div>
+            <div class="ft">Onde a Ábaco está em relação ao benchmark do setor — em CPL, conversão e mix de canais. <strong>Não comparado com quem gostariam de ser, mas com quem opera de fato no mesmo mercado.</strong></div>
           </div>
           <div class="f f--hot">
             <div class="ftag">Tendências de canal</div>
-            <div class="ft">O que as operações de crescimento mais acelerado do setor estão fazendo diferente em canal, criativo e estratégia de reativação — <strong>antes que vire prática comum.</strong></div>
+            <div class="ft">O que as operações de crescimento mais acelerado do setor estão fazendo diferente em canal, criativo e CRM — <strong>antes que vire prática comum.</strong></div>
           </div>
           <div class="f f--hot">
             <div class="ftag">Oportunidades específicas</div>
-            <div class="ft">Lacunas competitivas que os dados revelam — segmento ou região onde o custo de aquisição é menor e o concorrente ainda não chegou.</div>
+            <div class="ft">Lacunas competitivas que os dados revelam — segmento ou região onde o custo de aquisição é menor e o concorrente ainda não chegou com processo.</div>
+          </div>
+          <div class="f">
+            <div class="ftag">Auditoria de dados e martech</div>
+            <div class="ft">Análise do stack atual de ferramentas: CRM, tracking, automações, atribuição. <strong>Identificamos onde estão os gaps que impedem que os dados internos virem vantagem competitiva.</strong></div>
           </div>
         </div>
       </div>
@@ -1253,7 +1252,7 @@ body {
   </div>
 </section>
 
-<!-- ══ SCAD · COMO FUNCIONA NA PRÁTICA ══════════════════════════ -->
+<!-- ══ SCAD · COMO FUNCIONA NA PRÁTICA · TOC ════════════════════ -->
 <section class="snap" id="scad" style="background:var(--surface)">
   <div class="w">
     <span class="ey r">Na prática · Cadência mensal</span>
@@ -1264,19 +1263,19 @@ body {
         <div class="fs-name">Coleta</div>
         <div class="fs-items">
           <div class="fs-item">Dados de campanhas do período</div>
-          <div class="fs-item">Indicadores do CRM (leads, atendimentos, contratos)</div>
+          <div class="fs-item">Indicadores do CRM: leads, atendimentos, contratos</div>
           <div class="fs-item">Benchmarks atualizados da base V4</div>
-          <div class="fs-item">Novidades de canal e mercado</div>
+          <div class="fs-item">Saúde da base de leads por segmento RFM</div>
         </div>
       </div>
-      <div class="flow-step">
-        <div class="fs-tag fs-tag--ok">Semana 02</div>
-        <div class="fs-name">Análise</div>
+      <div class="flow-step flow-step--hot">
+        <div class="fs-tag" style="color:var(--red)">Semana 02 · TOC</div>
+        <div class="fs-name">Análise da Restrição</div>
         <div class="fs-items">
+          <div class="fs-item">Identificação do gargalo principal do ciclo</div>
           <div class="fs-item">Cruzamento com benchmark do setor</div>
-          <div class="fs-item">Identificação de gargalos e oportunidades</div>
           <div class="fs-item">Diagnóstico de funil por empreendimento</div>
-          <div class="fs-item">Revisão de criativos e LPs</div>
+          <div class="fs-item">Onde concentrar esforço no mês</div>
         </div>
       </div>
       <div class="flow-step flow-step--active">
@@ -1286,7 +1285,7 @@ body {
           <div class="fs-item">Dashboard de performance consolidado</div>
           <div class="fs-item">Recomendações priorizadas por impacto</div>
           <div class="fs-item">Propostas de ação por frente</div>
-          <div class="fs-item">Projeção de resultado com premissas</div>
+          <div class="fs-item">Plano tático do mês seguinte</div>
         </div>
       </div>
       <div class="flow-step">
@@ -1300,7 +1299,11 @@ body {
         </div>
       </div>
     </div>
-    <div class="g3 r d3" style="margin-top:2px">
+    <div class="qstrip r d3" style="margin-top:2px">
+      <p class="qtext">TOC · Teoria das Restrições aplicada ao marketing: <em>não analisamos tudo igualmente — identificamos o gargalo do mês e concentramos o esforço ali.</em></p>
+      <p class="qdesc">É onde somos mais assertivos. Cada ciclo tem uma restrição que limita o crescimento — pode ser o CPL, a velocidade de atendimento, o criativo, o CRM. Identificar e destravar a restrição certa gera mais resultado do que otimizar o que já está bem.</p>
+    </div>
+    <div class="g3 r d4" style="margin-top:2px">
       <div class="card card--red">
         <div class="cn">1</div>
         <div class="cl">Reunião estratégica mensal</div>
@@ -1309,19 +1312,77 @@ body {
       <div class="card">
         <div class="cn">3</div>
         <div class="cl">Frentes acompanhadas</div>
-        <div class="ct">Marketing, comercial e inteligência de mercado — integrados no mesmo ciclo mensal para que se retroalimentem.</div>
+        <div class="ct">Marketing, CRM/Comercial e inteligência de mercado — integrados no mesmo ciclo mensal para se retroalimentarem.</div>
       </div>
       <div class="card card--lift">
-        <div class="cn">∞</div>
-        <div class="cl">Acesso contínuo ao benchmark</div>
-        <div class="ct">A base V4 de 6k+ empresas atualiza em tempo real. O benchmark que a Ábaco recebe é sempre o mais atual disponível no mercado.</div>
+        <div class="cn">TOC</div>
+        <div class="cl">Análise focada no gargalo real</div>
+        <div class="ct">O método que nos torna mais assertivos: toda análise começa identificando onde está a restrição que mais limita o resultado daquele ciclo.</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ══ SAUDIT · AUDITORIA ESTRATÉGICA · PONTO DE PARTIDA ════════ -->
+<section class="snap" id="saudit">
+  <div class="w">
+    <span class="ey r">Ponto de partida · Auditoria estratégica</span>
+    <h2 class="h1 r d1">Antes de recomendar,<br>a gente<br><em>mapeia tudo.</em></h2>
+    <div class="flow flow--4 r d2">
+      <div class="flow-step flow-step--active">
+        <div class="fs-tag" style="color:var(--red)">Auditoria 01</div>
+        <div class="fs-name">Growth</div>
+        <div class="fs-items">
+          <div class="fs-item">Campanhas de mídia paga ativas</div>
+          <div class="fs-item">Análise de criativos e performance</div>
+          <div class="fs-item">Benchmark de canal vs. setor</div>
+          <div class="fs-item">Oportunidades de mix identificadas</div>
+          <div class="fs-item">Funil de aquisição mapeado</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="fs-tag" style="color:var(--red)">Auditoria 02</div>
+        <div class="fs-name">Dados &amp; CRM</div>
+        <div class="fs-items">
+          <div class="fs-item">Qualidade e completude dos dados de lead</div>
+          <div class="fs-item">Atribuição de canal por contrato fechado</div>
+          <div class="fs-item">Segmentação da base por RFM</div>
+          <div class="fs-item">Funil comercial mapeado por etapa</div>
+          <div class="fs-item">Gaps de rastreabilidade identificados</div>
+        </div>
+      </div>
+      <div class="flow-step flow-step--active">
+        <div class="fs-tag" style="color:var(--red)">Auditoria 03</div>
+        <div class="fs-name">Martech</div>
+        <div class="fs-items">
+          <div class="fs-item">Stack de ferramentas atual</div>
+          <div class="fs-item">Integrações CRM ↔ mídia ↔ e-mail</div>
+          <div class="fs-item">Automações ativas e gaps</div>
+          <div class="fs-item">Capacidade de tracking e atribuição</div>
+          <div class="fs-item">Oportunidades de consolidação</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="fs-tag" style="color:var(--red)">Plano 90 dias</div>
+        <div class="fs-name">Ação Priorizada</div>
+        <div class="fs-items">
+          <div class="fs-item">Top ações por impacto e esforço</div>
+          <div class="fs-item">Cronograma de implementação</div>
+          <div class="fs-item">KPIs de referência por frente</div>
+          <div class="fs-item">Responsáveis internos e externos</div>
+          <div class="fs-item">Ciclo de revisão quinzenal</div>
+        </div>
+      </div>
+    </div>
+    <div class="qstrip r d3" style="margin-top:2px">
+      <p class="qtext">No primeiro mês, mapeamos tudo. <em>No segundo, começamos a mover.</em></p>
+      <p class="qdesc">A auditoria é o ponto de partida de qualquer contrato V4. Não chegamos com receita pronta — chegamos com método para identificar onde está o maior ganho e atacar ali primeiro. A TOC define a ordem das ações.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ══ SDEL · ENTREGÁVEIS MENSAIS ═══════════════════════════════ -->
-<section class="snap" id="sdel">
+<section class="snap" id="sdel" style="background:var(--surface)">
   <div class="w">
     <span class="ey r">Entregáveis · O que vocês recebem todo mês</span>
     <h2 class="h1 r d1">Clareza.<br><em>Sem exceção.</em></h2>
@@ -1338,47 +1399,47 @@ body {
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Recomendação de redistribuição de verba</strong> com lógica e projeção de impacto</div>
+            <div class="del-text"><strong>Recomendação de mix e redistribuição de verba</strong> com lógica e oportunidade de novos canais</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Análise de criativos e landing pages</strong> com benchmark de CTR e taxa de conversão</div>
+            <div class="del-text"><strong>Análise de criativos e landing pages</strong> com foco em MQL real e filtro de qualidade</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Estratégia de reativação de base</strong> com segmentação e fluxo por empreendimento</div>
+            <div class="del-text"><strong>Estratégia de reativação da base</strong> com segmentação e fluxo por empreendimento</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Identificação de oportunidade de canal</strong> com base no que o mercado está adotando</div>
+            <div class="del-text"><strong>Mapa de oportunidades de canal</strong> baseado no que o mercado está adotando</div>
           </div>
         </div>
       </div>
       <div class="del-col">
         <div class="del-head">
           <div class="del-head-label">Frente 02</div>
-          <div class="del-head-title">Comercial</div>
+          <div class="del-head-title">Comercial + CRM</div>
         </div>
         <div class="del-items">
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Diagnóstico de funil</strong> lead → contrato por empreendimento com taxa de conversão por etapa</div>
+            <div class="del-text"><strong>Diagnóstico de funil</strong> lead → contrato por empreendimento com análise de cada etapa</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Análise de velocidade de atendimento</strong> por empreendimento e vendedor</div>
+            <div class="del-text"><strong>Segmentação RFM da base</strong> com priorização de leads quentes para ação comercial imediata</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Script de abordagem atualizado</strong> por etapa do ciclo de venda e perfil de lead</div>
+            <div class="del-text"><strong>Fluxo de reativação e nutrição</strong> automatizado por comportamento e estágio no funil</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Cadência de nutrição recomendada</strong> para leads em ciclo longo de 30–90 dias</div>
+            <div class="del-text"><strong>Dashboard de saúde do CRM</strong> com alertas de oportunidade e leads em risco de esfriamento</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Plano de reativação de leads frios</strong> segmentado por empreendimento e temperatura</div>
+            <div class="del-text"><strong>Plano de reativação da base de clientes</strong> para novos empreendimentos e indicação estruturada</div>
           </div>
         </div>
       </div>
@@ -1402,11 +1463,11 @@ body {
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Mapa de oportunidades de mercado</strong> — lacunas competitivas identificadas por região e segmento</div>
+            <div class="del-text"><strong>Diagnóstico de martech e dados</strong> com oportunidades de melhoria na stack e rastreabilidade</div>
           </div>
           <div class="del-item">
             <div class="del-dot"></div>
-            <div class="del-text"><strong>Dashboard consolidado</strong> com todos os KPIs das três frentes integrados em uma visão única</div>
+            <div class="del-text"><strong>Dashboard consolidado</strong> com KPIs das três frentes integrados em uma visão única mensal</div>
           </div>
         </div>
       </div>
@@ -1414,54 +1475,59 @@ body {
   </div>
 </section>
 
-<!-- ══ SPROJ · PROJEÇÃO · O QUE MUDA ════════════════════════════ -->
-<section class="snap" id="sproj" style="background:var(--surface)">
+<!-- ══ SCASE · CASE · XP INVESTIMENTOS ══════════════════════════ -->
+<section class="snap" id="scase">
   <div class="w">
-    <span class="ey r">Projeção · Cenário conservador</span>
-    <h2 class="h1 r d1">60.000 leads.<br>Processo estruturado.<br><em>O impacto é concreto.</em></h2>
-    <div class="proj-math r d2">
-      <div class="proj-cell">
-        <div class="proj-n">60.000</div>
-        <div class="proj-l">Leads na base ativa</div>
-        <div class="proj-note">Construída em 5 anos com R$1,44M de investimento</div>
+    <span class="ey r">Case · XP Investimentos × V4 Company</span>
+    <h2 class="h1 r d1">Mídia conectada<br>a resultado real.<br><em>O que acontece quando a V4 entra.</em></h2>
+    <div class="split r d2" style="margin-top:20px">
+      <div>
+        <div class="flist">
+          <div class="f">
+            <div class="ftag">O desafio</div>
+            <div class="ft">Campanhas operando com alto investimento — mas sem clareza de qual canal gerava o lead que de fato fechava. Atribuição genérica, criativos sem filtro de qualidade de MQL, mídia e CRM desconectados.</div>
+          </div>
+          <div class="f f--hot">
+            <div class="ftag">O que a V4 fez</div>
+            <div class="ft"><strong>Conectou mídia ao CRM:</strong> cada lead rastreado até o contrato. <strong>Análise de cohort</strong> respeitando o ciclo de decisão real do investidor. <strong>Criativos como filtro de MQL:</strong> em venda consultiva, criativo bom não gera mais lead — gera o lead certo. Mídia ranqueada pelo que fechou, não pelo que clicou.</div>
+          </div>
+          <div class="f">
+            <div class="ftag">O mecanismo</div>
+            <div class="ft">Dados do CRM alimentando segmentação de mídia. Atribuição honesta por canal. Otimização orientada a contrato fechado — não a clique, não a lead, não a impressão. Isso é o que a V4 traz para a Ábaco.</div>
+          </div>
+        </div>
+        <div class="qstrip" style="margin-top:2px">
+          <p class="qdesc">Investimentos é diferente de imóveis — <em>mas o mecanismo é idêntico:</em> conectar mídia ao resultado real e parar de otimizar pelo que ficou barato de comprar.</p>
+        </div>
       </div>
-      <div class="proj-op">×</div>
-      <div class="proj-cell proj-cell--lift">
-        <div class="proj-n">0,6%</div>
-        <div class="proj-l">Conversão conservadora</div>
-        <div class="proj-note">Abaixo do benchmark de 2–4% com processo. Margem real de crescimento.</div>
-      </div>
-      <div class="proj-op">=</div>
-      <div class="proj-cell proj-cell--red">
-        <div class="proj-n proj-n--red">360</div>
-        <div class="proj-l">Contratos potenciais por ciclo</div>
-        <div class="proj-note">Com processo e sem aumentar investimento em mídia nova</div>
-      </div>
-    </div>
-    <div class="qstrip r d3" style="margin-top:2px">
-      <p class="qtext">Cada décimo de ponto percentual a mais na conversão <em>vale dezenas de contratos</em> — sem um real adicional em captação.</p>
-      <p class="qdesc">Apresentado como projeção — as premissas dependem do funil atual da Ábaco, que levantaremos juntos no primeiro mês. O exercício mostra a escala do impacto de melhorias incrementais no processo.</p>
-    </div>
-    <div class="g4 r d4" style="margin-top:2px">
-      <div class="card">
-        <div class="cn cn--red">Mês 1</div>
-        <div class="cl">Diagnóstico aprofundado</div>
-        <div class="ct">Mapeamento completo do funil, benchmarks calibrados, plano de ação das três frentes.</div>
-      </div>
-      <div class="card card--lift">
-        <div class="cn cn--red">Mês 2</div>
-        <div class="cl">Primeiras otimizações</div>
-        <div class="ct">Redistribuição de verba, início de reativação de base, ajuste de processo de atendimento.</div>
-      </div>
-      <div class="card">
-        <div class="cn cn--red">Mês 3</div>
-        <div class="cl">Primeiros resultados</div>
-        <div class="ct">Comparativo de CPL e conversão antes/depois. Baseline estabelecido para crescimento contínuo.</div>
-      </div>
-      <div class="card card--lift">
-        <div class="cn cn--red">Mês 6</div>
-        <div class="cl">Operação estabilizada</div>
-        <div class="ct">Ciclo de decisão baseado em dado funcionando. Benchmark atualizado todo mês. Crescimento previsível.</div>
+      <div>
+        <div class="g2" style="margin-bottom:2px">
+          <div class="card card--red">
+            <div class="cn cn--red" style="font-size:clamp(28px,3vw,44px)">2,73</div>
+            <div class="cl">ROI da operação</div>
+            <div class="ct">Retorno sobre o investimento total em marketing. Medido de forma honesta, da campanha ao fechamento de contrato.</div>
+          </div>
+          <div class="card">
+            <div class="cn" style="font-size:clamp(28px,3vw,44px)">11,51</div>
+            <div class="cl">ROAS das campanhas</div>
+            <div class="ct">Retorno por real investido em mídia paga após conectar CRM ao funil de aquisição e cruzar atribuição real.</div>
+          </div>
+        </div>
+        <div class="highlight" style="margin-top:2px">
+          <div class="hl-n">+68%</div>
+          <div class="hl-div"></div>
+          <p class="hl-t">Crescimento em receita estimada após a parceria com a V4. <strong>XP, Spotify, iFood, Smart Fit — o mecanismo é o mesmo. A Ábaco tem o produto. A V4 traz o processo.</strong></p>
+        </div>
+        <div class="g3" style="margin-top:2px">
+          <div class="card card--lift">
+            <div class="cl">Parceiros da rede</div>
+            <div class="ct" style="font-size:11px">XP · Spotify · iFood · Smart Fit · Melissa · Lugano · Ortobom · Carmen Steffens</div>
+          </div>
+          <div class="card" style="grid-column:span 2">
+            <div class="cl">O benchmark que a Ábaco precisa</div>
+            <div class="ct">A mesma inteligência de dados que a V4 aplicou na XP é o que trazemos para calibrar marketing, CRM e comercial da Ábaco — com referências reais do mercado imobiliário.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1479,27 +1545,27 @@ body {
         <div class="inv-includes">
           <div class="inv-item">
             <div class="inv-check">✓</div>
-            Consultoria de Marketing — diagnóstico e benchmark de canal
+            Consultoria de Marketing — diagnóstico, benchmark e novos canais
           </div>
           <div class="inv-item">
             <div class="inv-check">✓</div>
-            Consultoria Comercial — funil, processo e estratégia de conversão
+            CRM &amp; Retenção — RFM, automação e base como canal
           </div>
           <div class="inv-item">
             <div class="inv-check">✓</div>
-            Inteligência de Mercado — acesso ao benchmark de 6k+ empresas V4
+            Consultoria Comercial — funil, processo e conversão
           </div>
           <div class="inv-item">
             <div class="inv-check">✓</div>
-            Reunião estratégica mensal com marketing e comercial
+            Inteligência de Mercado — benchmark de 6k+ empresas V4
           </div>
           <div class="inv-item">
             <div class="inv-check">✓</div>
-            Dashboard consolidado com KPIs das três frentes
+            Auditoria de growth, dados e martech no primeiro mês
           </div>
           <div class="inv-item">
             <div class="inv-check">✓</div>
-            Acesso direto ao consultor via canal dedicado
+            Reunião estratégica mensal + acesso direto ao consultor
           </div>
         </div>
       </div>
@@ -1507,17 +1573,17 @@ body {
         <div class="inv-compare">
           <div class="inv-compare-label">O que representa no contexto da operação</div>
           <div class="inv-compare-val">12,5% do investimento mensal em digital</div>
-          <div class="inv-compare-note">R$15k sobre R$120k/mês de mídia paga — o custo de orientação estratégica sobre o investimento já existente.</div>
+          <div class="inv-compare-note">R$15k sobre R$120k/mês de mídia paga — o custo de orientação estratégica sobre o investimento já existente. Se o processo melhorar a eficiência em qualquer percentual, o retorno se paga.</div>
         </div>
         <div class="inv-compare">
           <div class="inv-compare-label">Ponto de equilíbrio conservador</div>
-          <div class="inv-compare-val">1 contrato adicional por mês</div>
-          <div class="inv-compare-note">Dependendo do ticket médio do empreendimento, um contrato a mais por mês já cobre o investimento na consultoria — com margem.</div>
+          <div class="inv-compare-val">1 contrato adicional por ciclo</div>
+          <div class="inv-compare-note">Dependendo do ticket médio do empreendimento, um contrato a mais por mês já cobre o investimento na consultoria com margem positiva.</div>
         </div>
         <div class="inv-compare" style="background:var(--red-lo);border:1px solid var(--red-mid)">
-          <div class="inv-compare-label" style="color:var(--red)">Retorno sobre benchmark</div>
-          <div class="inv-compare-val" style="color:var(--text)">R$2bi em estoque a converter</div>
-          <div class="inv-compare-note">O produto está pronto. O time está montado. O investimento em mídia existe. A consultoria é o que organiza o sistema para extrair mais do que já está operando.</div>
+          <div class="inv-compare-label" style="color:var(--red)">O produto já existe</div>
+          <div class="inv-compare-val" style="color:var(--text)">O processo é o próximo passo</div>
+          <div class="inv-compare-note">Produto sólido. Time estruturado. Investimento de mídia significativo. A consultoria é o que organiza o sistema para extrair mais do que já está operando — sem adicionar custo de operação.</div>
         </div>
       </div>
     </div>
@@ -1530,7 +1596,7 @@ body {
   <div class="cta-inner">
     <div class="cta-ey r">Próximos passos</div>
     <h2 class="cta-h r d1">Três frentes.<br>Uma decisão.<br>Esta semana.</h2>
-    <p class="cta-s r d2">O diagnóstico está feito. A proposta está na mesa. O mercado não espera — e as operações que estruturarem processo e inteligência nos próximos meses vão sair na frente.</p>
+    <p class="cta-s r d2">O diagnóstico está feito. A proposta está na mesa. As operações que estruturarem processo, CRM e inteligência de mercado nos próximos meses vão sair na frente — e a Ábaco tem tudo para ser uma delas.</p>
     <div class="cta-steps r d3">
       <div class="cta-step">
         <div class="cta-sn">01</div>
@@ -1542,7 +1608,7 @@ body {
       </div>
       <div class="cta-step">
         <div class="cta-sn">03</div>
-        <div class="cta-st">Diagnóstico aprofundado<br>em 30 dias</div>
+        <div class="cta-st">Auditoria completa<br>no primeiro mês</div>
       </div>
     </div>
   </div>
