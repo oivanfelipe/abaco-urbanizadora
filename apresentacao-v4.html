@@ -97,6 +97,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 54px;
 }
 
 /* ─── FIXED NAV ───────────────────────────────────────────────── */
@@ -290,53 +291,85 @@ body {
 /* ─── HERO BG TEXT ────────────────────────────────────────────── */
 .hero-bg {
   position: absolute;
-  inset: 0;
+  right: -6%;
+  bottom: -4%;
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: clamp(90px, 18vw, 280px);
+  font-size: clamp(200px, 30vw, 480px);
   line-height: 0.85;
   color: transparent;
   -webkit-text-stroke: 1px var(--border);
   text-transform: uppercase;
   pointer-events: none;
   user-select: none;
-  display: flex;
-  align-items: flex-end;
-  padding: 0 32px;
   overflow: hidden;
+  letter-spacing: -.04em;
 }
 .hero-inner { position: relative; z-index: 1; }
 .hero-client {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.hero-client-name {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .2em;
+  font-weight: 700;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 18px;
-  display: block;
+  color: var(--text);
+}
+.hero-client-sep { width: 32px; height: 1px; background: var(--red); flex-shrink: 0; }
+.hero-client-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-accent {
+  width: 40px;
+  height: 3px;
+  background: var(--red);
+  margin-bottom: 20px;
 }
 .hero-h {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: clamp(40px, 6.5vw, 86px);
+  font-size: clamp(36px, 5.5vw, 80px);
   line-height: 1.0;
   text-transform: uppercase;
   letter-spacing: -.01em;
   color: var(--text);
   text-wrap: balance;
   margin-bottom: 22px;
-  max-width: 900px;
+  max-width: 860px;
 }
 .hero-h em { font-style: normal; color: var(--red); }
 .hero-sub {
-  font-size: clamp(13px, 1.3vw, 15px);
+  font-size: clamp(13px, 1.2vw, 14px);
   font-weight: 300;
   color: var(--muted);
-  max-width: 520px;
+  max-width: 480px;
   line-height: 1.7;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.hero-meta-line { width: 28px; height: 1px; background: var(--border); }
+.hero-meta-txt {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+/* keep old classes for fallback */
 .hero-rule { display: flex; align-items: center; gap: 16px; max-width: 560px; }
 .hr-line { flex: 1; height: 1px; background: var(--border); }
 .hr-txt {
@@ -844,16 +877,22 @@ body {
 </nav>
 
 <!-- ══ SCAPA · CAPA ══════════════════════════════════════════════ -->
-<section class="snap" id="scapa" style="background:var(--black);overflow:hidden;position:relative">
+<section class="snap" id="scapa" style="background:var(--black);overflow:hidden;position:relative;padding-top:0">
   <div class="hero-bg" aria-hidden="true">V4</div>
   <div class="w hero-inner">
-    <span class="hero-client r">Ábaco Urbanizadora · V4 Carvalho &amp; Co · Agosto 2026</span>
+    <div class="hero-client r">
+      <span class="hero-client-name">Ábaco Urbanizadora</span>
+      <span class="hero-client-sep"></span>
+      <span class="hero-client-tag">V4 Carvalho &amp; Co · Agosto 2026</span>
+    </div>
+    <div class="hero-accent r d1"></div>
     <h1 class="hero-h r d1">Alinhamento estratégico.<br>Growth orientado a dado.<br><em>Uma parceria de resultado.</em></h1>
-    <p class="hero-sub r d2">Marketing, CRM, comercial e inteligência de mercado — estruturados como consultoria de crescimento contínua para a Ábaco.</p>
-    <div class="hero-rule r d3">
-      <div class="hr-line"></div>
-      <span class="hr-txt">Proposta Estratégica Completa · Agência Carvalho · Unidade V4 Company</span>
-      <div class="hr-line"></div>
+    <p class="hero-sub r d2">Marketing, CRM, comercial e inteligência de mercado — estruturados como consultoria de crescimento contínua.</p>
+    <div class="hero-meta r d3">
+      <div class="hero-meta-line"></div>
+      <span class="hero-meta-txt">Proposta Estratégica · V4 Company</span>
+      <div class="hero-meta-line"></div>
+      <span class="hero-meta-txt">Agosto 2026</span>
     </div>
   </div>
 </section>
@@ -994,7 +1033,7 @@ body {
       <div>
         <span class="ey r">01 · Consultoria de Marketing</span>
         <h2 class="h1 r d1">O canal certo,<br>para o lançamento certo,<br><em>na hora certa.</em></h2>
-        <p class="body r d2">A Ábaco já investe R$120k/mês. A questão não é quanto investir — é <strong>como distribuir entre canais e empreendimentos</strong> para extrair o máximo de cada real. E quais novos canais podem ser abertos.</p>
+        <p class="body r d2">O investimento em mídia já existe e é relevante. A questão não é quanto investir — é <strong>como distribuir entre canais e empreendimentos</strong> para extrair o máximo de cada real. E quais novos canais podem ser abertos.</p>
         <p class="body r d3">Não chegamos com opinião. Chegamos com benchmark real: o que outras operações do mesmo porte fazem em Meta, Google e canais complementares — e o que está sendo adotado pelos que mais crescem.</p>
       </div>
       <div class="r d2">
@@ -1013,7 +1052,7 @@ body {
           </div>
           <div class="f f--hot">
             <div class="ftag">Base ativa como canal</div>
-            <div class="ft">60k leads construídos com alto investimento. Reativar a base custa muito menos que captar novo lead com qualidade equivalente. <strong>Estratégia de reativação segmentada por interesse e estágio de funil.</strong></div>
+            <div class="ft">Uma base significativa construída com alto investimento. Reativar a base custa muito menos que captar novo lead com qualidade equivalente. <strong>Estratégia de reativação segmentada por interesse e estágio de funil.</strong></div>
           </div>
         </div>
       </div>
@@ -1178,7 +1217,7 @@ body {
 <section class="snap" id="sintel">
   <div class="w">
     <span class="ey r">03 · Inteligência de Mercado</span>
-    <h2 class="h1 r d1">O mercado todo<br>visível para você.<br><em>6.000+ empresas.<br>Dados reais.</em></h2>
+    <h2 class="h1 r d1">O mercado todo visível.<br><em>6.000+ empresas. Dados reais.</em></h2>
     <div class="intel-wrap r d2">
       <div class="intel-left">
         <div class="intel-title">O que a V4 enxerga</div>
@@ -1227,10 +1266,6 @@ body {
           </div>
         </div>
       </div>
-    </div>
-    <div class="qstrip r d3">
-      <p class="qtext"><em>Enquanto a concorrência opera sem referência,</em> a Ábaco decide com benchmark real de 6.000+ empresas.</p>
-      <p class="qdesc">Essa visibilidade é o que separa uma decisão de investimento bem informada de uma apostada. A V4 traz isso como padrão — porque o dado já existe, e só precisa ser cruzado.</p>
     </div>
   </div>
 </section>
@@ -1463,7 +1498,7 @@ body {
 <section class="snap" id="scase">
   <div class="w">
     <span class="ey r">Case · XP Investimentos × V4 Company</span>
-    <h2 class="h1 r d1">Mídia conectada<br>a resultado real.<br><em>O que acontece quando a V4 entra.</em></h2>
+    <h2 class="h1 r d1">Mídia conectada a resultado real.<br><em>O que acontece quando a V4 entra.</em></h2>
     <div class="split r d2" style="margin-top:20px">
       <div>
         <div class="flist">
@@ -1501,16 +1536,6 @@ body {
           <div class="hl-n">+68%</div>
           <div class="hl-div"></div>
           <p class="hl-t">Crescimento em receita estimada após a parceria com a V4. <strong>XP, Spotify, iFood, Smart Fit — o mecanismo é o mesmo. A Ábaco tem o produto. A V4 traz o processo.</strong></p>
-        </div>
-        <div class="g3" style="margin-top:2px">
-          <div class="card card--lift">
-            <div class="cl">Parceiros da rede</div>
-            <div class="ct" style="font-size:11px">XP · Spotify · iFood · Smart Fit · Melissa · Lugano · Ortobom · Carmen Steffens</div>
-          </div>
-          <div class="card" style="grid-column:span 2">
-            <div class="cl">O benchmark que a Ábaco precisa</div>
-            <div class="ct">A mesma inteligência de dados que a V4 aplicou na XP é o que trazemos para calibrar marketing, CRM e comercial da Ábaco — com referências reais do mercado imobiliário.</div>
-          </div>
         </div>
       </div>
     </div>
