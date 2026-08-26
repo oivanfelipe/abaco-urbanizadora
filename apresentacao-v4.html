@@ -178,7 +178,7 @@ body {
 .h1 {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: clamp(28px, 3.8vw, 54px);
+  font-size: clamp(24px, 3.2vw, 44px);
   line-height: 1.05;
   text-transform: uppercase;
   letter-spacing: -.01em;
@@ -188,7 +188,7 @@ body {
 .h1 em { font-style: normal; color: var(--red); }
 
 .body {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.75;
   color: var(--muted);
@@ -240,7 +240,7 @@ body {
   margin-top: 5px;
   margin-bottom: 10px;
 }
-.ct { font-size: 12px; line-height: 1.6; color: var(--muted); font-weight: 300; }
+.ct { font-size: 14px; line-height: 1.6; color: var(--muted); font-weight: 300; }
 
 /* ─── FINDING ─────────────────────────────────────────────────── */
 .flist { display: flex; flex-direction: column; gap: 2px; }
@@ -263,7 +263,7 @@ body {
   margin-bottom: 4px;
 }
 .ftag--ok { color: var(--muted); }
-.ft { font-size: 13px; line-height: 1.55; color: var(--text); }
+.ft { font-size: 14px; line-height: 1.6; color: var(--text); }
 .ft strong { color: var(--red); font-weight: 600; }
 .ft em { font-style: italic; color: var(--muted); }
 
@@ -285,7 +285,7 @@ body {
   flex-shrink: 0;
 }
 .hl-div { width: 1px; height: 44px; background: rgba(255,255,255,.25); flex-shrink: 0; }
-.hl-t { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,.8); font-weight: 300; flex: 1; }
+.hl-t { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,.8); font-weight: 300; flex: 1; }
 .hl-t strong { color: #fff; font-weight: 600; }
 
 /* ─── HERO BG TEXT ────────────────────────────────────────────── */
@@ -349,7 +349,7 @@ body {
 }
 .hero-h em { font-style: normal; color: var(--red); }
 .hero-sub {
-  font-size: clamp(13px, 1.2vw, 14px);
+  font-size: clamp(15px, 1.4vw, 17px);
   font-weight: 300;
   color: var(--muted);
   max-width: 480px;
@@ -496,7 +496,7 @@ body {
 .fs-name {
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 15px;
   text-transform: uppercase;
   color: var(--text);
   margin-bottom: 5px;
@@ -513,7 +513,7 @@ body {
 }
 .fs-tag--ok { color: var(--muted); }
 .fs-items { display: flex; flex-direction: column; gap: 3px; }
-.fs-item { font-size: 11px; line-height: 1.4; color: var(--muted); font-weight: 300; }
+.fs-item { font-size: 13px; line-height: 1.4; color: var(--muted); font-weight: 300; }
 
 /* ─── DELIVERABLES TABLE ──────────────────────────────────────── */
 .del-grid {
@@ -897,18 +897,13 @@ body {
 </section>
 
 <!-- ══ SVQUEM · O QUE É A V4 CARVALHO ══════════════════════════ -->
-<section class="snap" id="svquem">
+<section class="snap" id="svquem" style="position:relative">
   <div class="w">
     <span class="ey r">Quem somos · V4 Carvalho &amp; Co</span>
     <div class="split r d1" style="margin-top:12px;align-items:start">
       <div style="display:flex;flex-direction:column;gap:16px">
         <h2 class="h1">A maior consultoria de marketing do Brasil.<br><em>Com a unidade certa para a Ábaco.</em></h2>
         <p class="body">A V4 Company não é agência — é <strong>consultoria de resultado</strong>. Estruturamos o processo que gera receita: 12 anos de operação, 600+ consultores, presença nacional. A <strong>V4 Carvalho</strong> é a unidade dedicada à Ábaco, com acesso completo à metodologia e benchmarks da rede.</p>
-        <div class="highlight">
-          <div class="hl-n">6k+</div>
-          <div class="hl-div"></div>
-          <p class="hl-t">Empresas ativas na rede V4. <strong>Dados reais para calibrar cada decisão da Ábaco.</strong></p>
-        </div>
       </div>
       <div>
         <div class="g2" style="gap:2px;background:var(--border)">
@@ -939,6 +934,11 @@ body {
         </div>
       </div>
     </div>
+  </div>
+  <div style="position:absolute;bottom:28px;right:48px;display:flex;align-items:center;gap:16px">
+    <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:36px;color:var(--text);line-height:1;letter-spacing:-.02em">6k+</div>
+    <div style="width:1px;height:38px;background:var(--border)"></div>
+    <p style="font-size:12px;line-height:1.55;color:var(--muted);max-width:140px">Empresas ativas<br>na rede V4</p>
   </div>
 </section>
 
@@ -1139,7 +1139,7 @@ body {
 <section class="snap" id="scom" style="background:var(--surface)">
   <div class="w">
     <span class="ey r">02 · Comercial · Processo e Benchmark</span>
-    <h2 class="h1 r d1">Cadência que não perde lead.<br><em>Benchmark que orienta<br>onde melhorar.</em></h2>
+    <h2 class="h1 r d1">Benchmark que orienta<br><em>onde melhorar.</em></h2>
     <div class="flow flow--5 r d2" style="margin-top:20px">
       <div class="flow-step flow-step--hot">
         <div class="fs-tag" style="color:var(--red)">D+0 · Prioridade</div>
